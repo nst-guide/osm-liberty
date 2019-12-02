@@ -17,6 +17,10 @@
         "https://klokantech.github.io/naturalearthtiles/tiles/natural_earth_2_shaded_relief.raster/{z}/{x}/{y}.png"
       ],
       "type": "raster"
+    },
+    "hillshade": {
+      "type": "raster",
+      "url": "https://tiles.nst.guide/hillshade/tile.json"
     }
   },
   "sprite": "https://maputnik.github.io/osm-liberty/sprites/osm-liberty",
@@ -72,6 +76,27 @@
           1.5
         ],
         "line-color": "rgba(228, 241, 215, 1)"
+      }
+    },
+    {
+      "id": "hillshade",
+      "source": "hillshade",
+      "type": "raster",
+      "minzoom": 6,
+      "paint": {
+        "raster-opacity": {
+          "base": 1.5,
+          "stops": [
+            [
+              6,
+              0.3
+            ],
+            [
+              14,
+              0.4
+            ]
+          ]
+        }
       }
     },
     {
