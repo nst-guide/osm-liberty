@@ -21,6 +21,15 @@
     "hillshade": {
       "type": "raster",
       "url": "https://tiles.nst.guide/hillshade/tile.json"
+    },
+    "terrarium": {
+      "type": "raster-dem",
+      "tiles": [
+        "https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png"
+      ],
+      "minzoom": 0,
+      "maxzoom": 15,
+      "encoding": "terrarium"
     }
   },
   "sprite": "https://maputnik.github.io/osm-liberty/sprites/osm-liberty",
@@ -79,6 +88,20 @@
       }
     },
     {
+      "id": "terrarium",
+      "source": "terrarium",
+      "type": "hillshade",
+      "minzoom": 0,
+      "paint": {
+        "hillshade-shadow-color": "hsl(39, 21%, 33%)",
+        "hillshade-illumination-direction": 315,
+        "hillshade-exaggeration": 0.3
+      },
+      "layout": {
+        "visibility": "none"
+      }
+    },
+    {
       "id": "hillshade",
       "source": "hillshade",
       "type": "raster",
@@ -93,10 +116,13 @@
             ],
             [
               14,
-              0.4
+              0.5
             ]
           ]
         }
+      },
+      "layout": {
+        "visibility": "visible"
       }
     },
     {
