@@ -20,7 +20,7 @@
     },
     "hillshade": {
       "type": "raster",
-      "url": "https://tiles.nst.guide/hillshade/tile.json"
+      "url": "https://tiles.nst.guide/hillshade_hr/tile.json"
     },
     "terrarium": {
       "type": "raster-dem",
@@ -116,11 +116,11 @@
           "stops": [
             [
               6,
-              0.3
+              0.7
             ],
             [
               14,
-              0.5
+              1
             ]
           ]
         }
@@ -4046,7 +4046,8 @@
         "text-field": "{ContourElevation}",
         "text-font": [
           "Noto Sans Regular"
-        ]
+        ],
+        "visibility": "visible"
       },
       "paint": {
         "text-color": "rgb(131, 66, 37)",
