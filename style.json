@@ -18,18 +18,14 @@
       ],
       "type": "raster"
     },
-    "hillshade": {
-      "type": "raster",
-      "url": "https://tiles.nst.guide/hillshade_hr/tile.json"
-    },
-    "terrarium": {
+    "terrain-rgb": {
       "type": "raster-dem",
       "tiles": [
-        "https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png"
+        "https://tiles.nst.guide/terrain-rgb-webp/{z}/{x}/{y}.png"
       ],
       "minzoom": 0,
-      "maxzoom": 15,
-      "encoding": "terrarium"
+      "maxzoom": 12,
+      "encoding": "mapbox"
     },
     "contours": {
       "type": "vector",
@@ -92,38 +88,14 @@
       }
     },
     {
-      "id": "terrarium",
-      "source": "terrarium",
+      "id": "terrain-rgb",
+      "source": "terrain-rgb",
       "type": "hillshade",
       "minzoom": 0,
       "paint": {
         "hillshade-shadow-color": "hsl(39, 21%, 33%)",
         "hillshade-illumination-direction": 315,
-        "hillshade-exaggeration": 0.3
-      },
-      "layout": {
-        "visibility": "none"
-      }
-    },
-    {
-      "id": "hillshade",
-      "source": "hillshade",
-      "type": "raster",
-      "minzoom": 6,
-      "paint": {
-        "raster-opacity": {
-          "base": 1.5,
-          "stops": [
-            [
-              6,
-              0.7
-            ],
-            [
-              14,
-              1
-            ]
-          ]
-        }
+        "hillshade-exaggeration": 1
       },
       "layout": {
         "visibility": "visible"
@@ -3197,7 +3169,7 @@
           "property": "render_min_height",
           "type": "identity"
         },
-        "fill-extrusion-opacity": 0.8
+        "fill-extrusion-opacity": 1
       }
     },
     {
