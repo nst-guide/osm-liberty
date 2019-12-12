@@ -167,6 +167,62 @@
       }
     },
     {
+      "id": "contour_index",
+      "type": "line",
+      "source": "contours",
+      "source-layer": "Elev_Contour",
+      "filter": [
+        "all",
+        [
+          ">",
+          "ContourElevation",
+          0
+        ],
+        [
+          "==",
+          "FCode",
+          10102
+        ]
+      ],
+      "layout": {
+        "visibility": "visible"
+      },
+      "paint": {
+        "line-color": "rgb(166, 116, 66)",
+        "line-opacity": 0.4,
+        "line-width": 1.1
+      },
+      "minzoom": 0
+    },
+    {
+      "id": "contour",
+      "type": "line",
+      "source": "contours",
+      "source-layer": "Elev_Contour",
+      "filter": [
+        "all",
+        [
+          "==",
+          "FCode",
+          10101
+        ],
+        [
+          ">",
+          "ContourElevation",
+          0
+        ]
+      ],
+      "layout": {
+        "visibility": "visible"
+      },
+      "paint": {
+        "line-color": "rgb(179, 134, 89)",
+        "line-opacity": 0.3,
+        "line-width": 0.6
+      },
+      "minzoom": 7
+    },
+    {
       "id": "landuse_cemetery",
       "type": "fill",
       "source": "openmaptiles",
@@ -3320,6 +3376,62 @@
       }
     },
     {
+      "id": "contour_label",
+      "type": "symbol",
+      "metadata": {},
+      "source": "contours",
+      "source-layer": "Elev_Contour",
+      "filter": [
+        "all",
+        [
+          "==",
+          "$type",
+          "LineString"
+        ],
+        [
+          "==",
+          "FCode",
+          10102
+        ],
+        [
+          ">",
+          "ContourElevation",
+          0
+        ]
+      ],
+      "layout": {
+        "text-size": {
+          "base": 1,
+          "stops": [
+            [
+              15,
+              9.5
+            ],
+            [
+              20,
+              12
+            ]
+          ]
+        },
+        "text-allow-overlap": false,
+        "symbol-avoid-edges": true,
+        "text-ignore-placement": false,
+        "symbol-placement": "line",
+        "text-padding": 10,
+        "text-rotation-alignment": "map",
+        "text-field": "{ContourElevation}",
+        "text-font": [
+          "Open Sans Regular"
+        ],
+        "visibility": "visible"
+      },
+      "paint": {
+        "text-color": "rgb(131, 66, 37)",
+        "text-halo-color": "hsla(0, 0%, 100%, 0.5)",
+        "text-halo-width": 1.5
+      }
+    },
+    {
       "id": "poi_z16",
       "type": "symbol",
       "source": "openmaptiles",
@@ -3973,118 +4085,6 @@
         "text-halo-color": "rgba(255,255,255,0.7)",
         "text-halo-width": 1
       }
-    },
-    {
-      "id": "contour_label",
-      "type": "symbol",
-      "metadata": {},
-      "source": "contours",
-      "source-layer": "Elev_Contour",
-      "filter": [
-        "all",
-        [
-          "==",
-          "$type",
-          "LineString"
-        ],
-        [
-          "==",
-          "FCode",
-          10102
-        ],
-        [
-          ">",
-          "ContourElevation",
-          0
-        ]
-      ],
-      "layout": {
-        "text-size": {
-          "base": 1,
-          "stops": [
-            [
-              15,
-              9.5
-            ],
-            [
-              20,
-              12
-            ]
-          ]
-        },
-        "text-allow-overlap": false,
-        "symbol-avoid-edges": true,
-        "text-ignore-placement": false,
-        "symbol-placement": "line",
-        "text-padding": 10,
-        "text-rotation-alignment": "map",
-        "text-field": "{ContourElevation}",
-        "text-font": [
-          "Open Sans Regular"
-        ],
-        "visibility": "visible"
-      },
-      "paint": {
-        "text-color": "rgb(131, 66, 37)",
-        "text-halo-color": "hsla(0, 0%, 100%, 0.5)",
-        "text-halo-width": 1.5
-      }
-    },
-    {
-      "id": "contour_index",
-      "type": "line",
-      "source": "contours",
-      "source-layer": "Elev_Contour",
-      "filter": [
-        "all",
-        [
-          ">",
-          "ContourElevation",
-          0
-        ],
-        [
-          "==",
-          "FCode",
-          10102
-        ]
-      ],
-      "layout": {
-        "visibility": "visible"
-      },
-      "paint": {
-        "line-color": "rgb(166, 116, 66)",
-        "line-opacity": 0.4,
-        "line-width": 1.1
-      },
-      "minzoom": 0
-    },
-    {
-      "id": "contour",
-      "type": "line",
-      "source": "contours",
-      "source-layer": "Elev_Contour",
-      "filter": [
-        "all",
-        [
-          "==",
-          "FCode",
-          10101
-        ],
-        [
-          ">",
-          "ContourElevation",
-          0
-        ]
-      ],
-      "layout": {
-        "visibility": "visible"
-      },
-      "paint": {
-        "line-color": "rgb(179, 134, 89)",
-        "line-opacity": 0.3,
-        "line-width": 0.6
-      },
-      "minzoom": 7
     }
   ],
   "id": "osm-liberty"
