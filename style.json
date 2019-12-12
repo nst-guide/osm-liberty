@@ -236,7 +236,8 @@
             ]
           ]
         }
-      }
+      },
+      "minzoom": 9
     },
     {
       "id": "waterway_other",
