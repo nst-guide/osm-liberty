@@ -306,6 +306,11 @@
           "!=",
           "class",
           "river"
+        ],
+        [
+          "!=",
+          "intermittent",
+          1
         ]
       ],
       "layout": {
@@ -318,7 +323,7 @@
           "stops": [
             [
               11,
-              1
+              1.5
             ],
             [
               20,
@@ -326,6 +331,49 @@
             ]
           ]
         }
+      }
+    },
+    {
+      "id": "waterway_other_intermittent",
+      "type": "line",
+      "source": "openmaptiles",
+      "source-layer": "waterway",
+      "filter": [
+        "all",
+        [
+          "!=",
+          "class",
+          "river"
+        ],
+        [
+          "==",
+          "intermittent",
+          1
+        ]
+      ],
+      "layout": {
+        "line-cap": "square",
+        "visibility": "visible"
+      },
+      "paint": {
+        "line-color": "#a0c8f0",
+        "line-width": {
+          "base": 1.3,
+          "stops": [
+            [
+              11,
+              1.5
+            ],
+            [
+              20,
+              6
+            ]
+          ]
+        },
+        "line-dasharray": [
+          3,
+          2
+        ]
       }
     },
     {
