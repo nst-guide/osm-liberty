@@ -1778,6 +1778,11 @@
           "class",
           "path",
           "pedestrian"
+        ],
+        [
+          "!=",
+          "subclass",
+          "path"
         ]
       ],
       "layout": {
@@ -1802,6 +1807,63 @@
             ]
           ]
         }
+      }
+    },
+    {
+      "id": "road_path_pedestrian_trail",
+      "type": "line",
+      "source": "openmaptiles",
+      "source-layer": "transportation",
+      "minzoom": 13,
+      "filter": [
+        "all",
+        [
+          "==",
+          "$type",
+          "LineString"
+        ],
+        [
+          "!in",
+          "brunnel",
+          "bridge",
+          "tunnel"
+        ],
+        [
+          "in",
+          "class",
+          "path",
+          "pedestrian"
+        ],
+        [
+          "==",
+          "subclass",
+          "path"
+        ]
+      ],
+      "layout": {
+        "line-join": "round",
+        "visibility": "visible"
+      },
+      "paint": {
+        "line-color": "rgba(197, 170, 51, 1)",
+        "line-dasharray": [
+          3,
+          1
+        ],
+        "line-width": {
+          "base": 1.2,
+          "stops": [
+            [
+              13,
+              2
+            ],
+            [
+              20,
+              10
+            ]
+          ]
+        },
+        "line-opacity": 1
       }
     },
     {
