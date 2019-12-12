@@ -3601,6 +3601,69 @@
       "minzoom": 0
     },
     {
+      "id": "peak_label",
+      "type": "symbol",
+      "source": "openmaptiles",
+      "source-layer": "mountain_peak",
+      "minzoom": 9,
+      "filter": [
+        "all",
+        [
+          "==",
+          "$type",
+          "Point"
+        ],
+        [
+          "<=",
+          "rank",
+          1
+        ]
+      ],
+      "layout": {
+        "icon-image": "mountain_11",
+        "text-anchor": "top",
+        "text-field": [
+          "concat",
+          [
+            "get",
+            "name"
+          ],
+          "\n",
+          [
+            "to-string",
+            [
+              "round",
+              [
+                "*",
+                [
+                  "get",
+                  "ele"
+                ],
+                3.28084
+              ]
+            ]
+          ],
+          " ft"
+        ],
+        "text-font": [
+          "Open Sans Italic"
+        ],
+        "text-max-width": 9,
+        "text-offset": [
+          0,
+          0.6
+        ],
+        "text-size": 11,
+        "icon-allow-overlap": false
+      },
+      "paint": {
+        "text-color": "#666",
+        "text-halo-blur": 0.5,
+        "text-halo-color": "#ffffff",
+        "text-halo-width": 1
+      }
+    },
+    {
       "id": "road_label",
       "type": "symbol",
       "source": "openmaptiles",
