@@ -3558,11 +3558,11 @@
         "symbol-spacing": 500,
         "text-field": "{ref}",
         "text-font": [
-          "Roboto Regular"
+          "Open Sans Regular"
         ],
         "text-offset": [
           0,
-          0.1
+          0
         ],
         "text-rotation-alignment": "viewport",
         "text-size": 10,
