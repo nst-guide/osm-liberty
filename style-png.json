@@ -21,7 +21,7 @@
     "terrain-rgb": {
       "type": "raster-dem",
       "tiles": [
-        "https://tiles.nst.guide/terrain-rgb-webp/{z}/{x}/{y}.png"
+        "https://tiles.nst.guide/terrain-rgb-png/{z}/{x}/{y}.png"
       ],
       "minzoom": 0,
       "maxzoom": 12,
