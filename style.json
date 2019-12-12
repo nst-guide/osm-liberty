@@ -3307,7 +3307,7 @@
       "layout": {
         "text-field": "{name}",
         "text-font": [
-          "Roboto Regular"
+          "Open Sans Semibold Italic"
         ],
         "text-max-width": 5,
         "text-size": 12
@@ -3342,14 +3342,14 @@
         "text-anchor": "top",
         "text-field": "{name}",
         "text-font": [
-          "Roboto Condensed Italic"
+          "Open Sans Italic"
         ],
         "text-max-width": 9,
         "text-offset": [
           0,
           0.6
         ],
-        "text-size": 12
+        "text-size": 11
       },
       "paint": {
         "text-color": "#666",
@@ -3432,14 +3432,14 @@
         "text-anchor": "top",
         "text-field": "{name}",
         "text-font": [
-          "Roboto Condensed Italic"
+          "Open Sans Italic"
         ],
         "text-max-width": 9,
         "text-offset": [
           0,
           0.6
         ],
-        "text-size": 12
+        "text-size": 11
       },
       "paint": {
         "text-color": "#666",
@@ -3468,21 +3468,22 @@
         "text-anchor": "left",
         "text-field": "{name_en}",
         "text-font": [
-          "Roboto Condensed Italic"
+          "Open Sans Italic"
         ],
         "text-max-width": 9,
         "text-offset": [
           0.9,
           0
         ],
-        "text-size": 12
+        "text-size": 11
       },
       "paint": {
         "text-color": "#4898ff",
         "text-halo-blur": 0.5,
         "text-halo-color": "#ffffff",
         "text-halo-width": 1
-      }
+      },
+      "minzoom": 0
     },
     {
       "id": "road_label",
@@ -3588,7 +3589,7 @@
       "layout": {
         "text-field": "{name_en}",
         "text-font": [
-          "Roboto Condensed Italic"
+          "Open Sans Italic"
         ],
         "text-letter-spacing": 0.1,
         "text-max-width": 9,
@@ -3629,7 +3630,7 @@
       "layout": {
         "text-field": "{name_en}",
         "text-font": [
-          "Roboto Regular"
+          "Open Sans Regular"
         ],
         "text-max-width": 8,
         "text-size": {
@@ -3682,7 +3683,7 @@
         "text-anchor": "bottom",
         "text-field": "{name_en}",
         "text-font": [
-          "Roboto Regular"
+          "Open Sans Regular"
         ],
         "text-max-width": 8,
         "text-offset": [
@@ -3740,7 +3741,7 @@
         "text-anchor": "bottom",
         "text-field": "{name_en}",
         "text-font": [
-          "Roboto Medium"
+          "Open Sans Regular"
         ],
         "text-max-width": 8,
         "text-offset": [
@@ -3786,7 +3787,7 @@
       "layout": {
         "text-field": "{name_en}",
         "text-font": [
-          "Roboto Condensed Italic"
+          "Open Sans Italic"
         ],
         "text-size": {
           "stops": [
@@ -4018,7 +4019,7 @@
         "text-rotation-alignment": "map",
         "text-field": "{ContourElevation}",
         "text-font": [
-          "Noto Sans Regular"
+          "Open Sans Regular"
         ],
         "visibility": "visible"
       },
