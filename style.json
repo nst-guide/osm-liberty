@@ -3497,11 +3497,11 @@
         "text-anchor": "center",
         "text-field": "{name}",
         "text-font": [
-          "Roboto Regular"
+          "Open Sans Regular"
         ],
         "text-offset": [
           0,
-          0.15
+          0
         ],
         "text-size": {
           "base": 1,
@@ -3518,9 +3518,10 @@
         }
       },
       "paint": {
-        "text-color": "#765",
+        "text-color": "rgba(30, 30, 30, 1)",
         "text-halo-blur": 0.5,
-        "text-halo-width": 1
+        "text-halo-width": 1.5,
+        "text-halo-color": "rgba(255, 255, 255, 1)"
       }
     },
     {
