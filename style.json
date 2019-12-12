@@ -3742,7 +3742,11 @@
               13
             ]
           ]
-        }
+        },
+        "symbol-spacing": 350,
+        "text-max-angle": 40,
+        "text-letter-spacing": 0,
+        "text-max-width": 10
       },
       "paint": {
         "text-color": "rgba(30, 30, 30, 1)",
