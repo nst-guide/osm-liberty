@@ -27,6 +27,16 @@ support `webp` images, so I store `png` images as a fallback.
 I develop with `style.json` and then copy changes to `style-png.json`, changing
 just the terrain rgb source.
 
+#### Fonts
+
+Currently, the only fonts used are:
+
+- Open Sans Regular
+- Open Sans Semibold Italic
+- Open Sans Italic
+
+The full ranges for each of these three font stacks are in the `fonts/` directory.
+
 ## Usage
 
 You can use the style in your Mapbox GL maps.

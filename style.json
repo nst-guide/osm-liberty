@@ -33,7 +33,7 @@
     }
   },
   "sprite": "https://maputnik.github.io/osm-liberty/sprites/osm-liberty",
-  "glyphs": "https://tiles.nst.guide/fonts/{fontstack}/{range}.pbf",
+  "glyphs": "https://raw.githubusercontent.com/nst-guide/osm-liberty/gh-pages/fonts/{fontstack}/{range}.pbf",
   "layers": [
     {
       "id": "background",
