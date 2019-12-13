@@ -16,6 +16,16 @@ The main changes of this fork compared to the original:
 - Uses Open Sans fonts instead of Roboto. Pregenerated Open Sans and Roboto font stacks can be downloaded from the [openmaptiles/fonts releases](https://github.com/openmaptiles/fonts/releases).
 - Puts more focus on trails, and adds mountain peaks
 
+#### `style.json` vs `style-png.json`
+
+When creating a [terrain-rgb hillshade](://github.com/nst-guide/hillshade), the
+output tiles can be in either `png` or `webp` format. The `webp` output format
+has ~30-40% smaller file sizes, which mean less bandwidth cost and faster load
+times for users. However, older browsers and all iOS browsers don't currently
+support `webp` images, so I store `png` images as a fallback.
+
+I develop with `style.json` and then copy changes to `style-png.json`, changing
+just the terrain rgb source.
 
 ## Usage
 
