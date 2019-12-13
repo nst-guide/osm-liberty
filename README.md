@@ -6,9 +6,20 @@ A free Mapbox GL basemap style for everyone with complete liberty to use and sel
 
 **[Preview OSM Liberty with Maputnik](https://maputnik.github.io/editor/?style=https://maputnik.github.io/osm-liberty/style.json)**
 
+
+## Fork
+
+The main changes of this fork compared to the original:
+
+- Contours layer, using 40' contours data from USGS, created in [this repository](https://github.com/nst-guide/contours).
+- Hillshade layer, using generated tiles conforming to the Mapbox Terrain RGB standard, created from [this repository](https://github.com/nst-guide/hillshade)
+- Uses Open Sans fonts instead of Roboto. Pregenerated Open Sans and Roboto font stacks can be downloaded from the [openmaptiles/fonts releases](https://github.com/openmaptiles/fonts/releases).
+- Puts more focus on trails, and adds mountain peaks
+
+
 ## Usage
 
-You can use the style in your Mapbox GL maps. 
+You can use the style in your Mapbox GL maps.
 
 By default, the vector tiles and glyphs are served from [Maptiler Cloud](https://www.maptiler.com/cloud/) and the raster tiles and sprites directly from GitHub.
 You would need to [subscribe](https://www.maptiler.com/cloud/plans) to Maptiler Cloud to get an access key and replace the placeholder {key} for the [vector source](https://github.com/maputnik/osm-liberty/blob/gh-pages/style.json#L11) and [glyphs](https://github.com/maputnik/osm-liberty/blob/gh-pages/style.json#L23) with your own key.
@@ -85,7 +96,7 @@ Green        | `#76a723`
 2. Apply your changes and download the icons in SVG format and the iconset in JSON format.
 3. Optional: Format the JSON with `cat iconset.json | jq -MS '.'` for better legibility.
 4. Add the SVG files from the folder [svgs_not_in_iconset](https://github.com/maputnik/osm-liberty/tree/gh-pages/svgs/svgs_not_in_iconset) to the folder `svgs` downloaded from the Maki Editor.
-These are the SVGs for road shields, the dot used for city and town layers and the road area pattern which could not be modified using the Maki Editor. To modify these you could use e.g. [Inkscape](https://inkscape.org). 
+These are the SVGs for road shields, the dot used for city and town layers and the road area pattern which could not be modified using the Maki Editor. To modify these you could use e.g. [Inkscape](https://inkscape.org).
 5. Install [spritezero-cli](https://github.com/mapbox/spritezero-cli): `npm install -g @mapbox/spritezero-cli`
 6. Generate the low resolution sprite: `spritezero osm-liberty ./svgs/`
 7. Generate the high resolution sprite: `spritezero --retina osm-liberty@2x ./svgs/`
