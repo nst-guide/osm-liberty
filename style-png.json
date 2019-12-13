@@ -167,6 +167,62 @@
       }
     },
     {
+      "id": "contour_index",
+      "type": "line",
+      "source": "contours",
+      "source-layer": "Elev_Contour",
+      "filter": [
+        "all",
+        [
+          ">",
+          "ContourElevation",
+          0
+        ],
+        [
+          "==",
+          "FCode",
+          10102
+        ]
+      ],
+      "layout": {
+        "visibility": "visible"
+      },
+      "paint": {
+        "line-color": "rgb(166, 116, 66)",
+        "line-opacity": 0.4,
+        "line-width": 1.1
+      },
+      "minzoom": 0
+    },
+    {
+      "id": "contour",
+      "type": "line",
+      "source": "contours",
+      "source-layer": "Elev_Contour",
+      "filter": [
+        "all",
+        [
+          "==",
+          "FCode",
+          10101
+        ],
+        [
+          ">",
+          "ContourElevation",
+          0
+        ]
+      ],
+      "layout": {
+        "visibility": "visible"
+      },
+      "paint": {
+        "line-color": "rgb(179, 134, 89)",
+        "line-opacity": 0.3,
+        "line-width": 0.6
+      },
+      "minzoom": 7
+    },
+    {
       "id": "landuse_cemetery",
       "type": "fill",
       "source": "openmaptiles",
@@ -236,7 +292,8 @@
             ]
           ]
         }
-      }
+      },
+      "minzoom": 9
     },
     {
       "id": "waterway_other",
@@ -249,6 +306,11 @@
           "!=",
           "class",
           "river"
+        ],
+        [
+          "!=",
+          "intermittent",
+          1
         ]
       ],
       "layout": {
@@ -261,7 +323,7 @@
           "stops": [
             [
               11,
-              1
+              1.5
             ],
             [
               20,
@@ -269,6 +331,49 @@
             ]
           ]
         }
+      }
+    },
+    {
+      "id": "waterway_other_intermittent",
+      "type": "line",
+      "source": "openmaptiles",
+      "source-layer": "waterway",
+      "filter": [
+        "all",
+        [
+          "!=",
+          "class",
+          "river"
+        ],
+        [
+          "==",
+          "intermittent",
+          1
+        ]
+      ],
+      "layout": {
+        "line-cap": "square",
+        "visibility": "visible"
+      },
+      "paint": {
+        "line-color": "#a0c8f0",
+        "line-width": {
+          "base": 1.3,
+          "stops": [
+            [
+              11,
+              1.5
+            ],
+            [
+              20,
+              6
+            ]
+          ]
+        },
+        "line-dasharray": [
+          3,
+          2
+        ]
       }
     },
     {
@@ -1673,6 +1778,11 @@
           "class",
           "path",
           "pedestrian"
+        ],
+        [
+          "!=",
+          "subclass",
+          "path"
         ]
       ],
       "layout": {
@@ -1697,6 +1807,115 @@
             ]
           ]
         }
+      }
+    },
+    {
+      "id": "road_path_pedestrian_trail_casing",
+      "type": "line",
+      "source": "openmaptiles",
+      "source-layer": "transportation",
+      "filter": [
+        "all",
+        [
+          "!in",
+          "brunnel",
+          "bridge",
+          "tunnel"
+        ],
+        [
+          "in",
+          "class",
+          "path",
+          "pedestrian"
+        ],
+        [
+          "==",
+          "subclass",
+          "path"
+        ],
+        [
+          "==",
+          "$type",
+          "LineString"
+        ]
+      ],
+      "layout": {
+        "line-cap": "round",
+        "line-join": "round"
+      },
+      "paint": {
+        "line-color": "rgba(206, 172, 52, 1)",
+        "line-width": {
+          "base": 1.2,
+          "stops": [
+            [
+              12,
+              2.5
+            ],
+            [
+              20,
+              5
+            ]
+          ]
+        },
+        "line-opacity": 1
+      }
+    },
+    {
+      "id": "road_path_pedestrian_trail",
+      "type": "line",
+      "source": "openmaptiles",
+      "source-layer": "transportation",
+      "minzoom": 13,
+      "filter": [
+        "all",
+        [
+          "==",
+          "$type",
+          "LineString"
+        ],
+        [
+          "!in",
+          "brunnel",
+          "bridge",
+          "tunnel"
+        ],
+        [
+          "in",
+          "class",
+          "path",
+          "pedestrian"
+        ],
+        [
+          "==",
+          "subclass",
+          "path"
+        ]
+      ],
+      "layout": {
+        "line-join": "round",
+        "visibility": "visible"
+      },
+      "paint": {
+        "line-color": "rgba(255, 255, 255, 1)",
+        "line-dasharray": [
+          1.5,
+          1
+        ],
+        "line-width": {
+          "base": 1.2,
+          "stops": [
+            [
+              12,
+              1
+            ],
+            [
+              20,
+              4
+            ]
+          ]
+        },
+        "line-opacity": 1
       }
     },
     {
@@ -3267,10 +3486,66 @@
       }
     },
     {
+      "id": "contour_label",
+      "type": "symbol",
+      "metadata": {},
+      "source": "contours",
+      "source-layer": "Elev_Contour",
+      "filter": [
+        "all",
+        [
+          "==",
+          "$type",
+          "LineString"
+        ],
+        [
+          "==",
+          "FCode",
+          10102
+        ],
+        [
+          ">",
+          "ContourElevation",
+          0
+        ]
+      ],
+      "layout": {
+        "text-size": {
+          "base": 1,
+          "stops": [
+            [
+              15,
+              9.5
+            ],
+            [
+              20,
+              12
+            ]
+          ]
+        },
+        "text-allow-overlap": false,
+        "symbol-avoid-edges": true,
+        "text-ignore-placement": false,
+        "symbol-placement": "line",
+        "text-padding": 10,
+        "text-rotation-alignment": "map",
+        "text-field": "{ContourElevation}",
+        "text-font": [
+          "Open Sans Regular"
+        ],
+        "visibility": "visible"
+      },
+      "paint": {
+        "text-color": "rgb(131, 66, 37)",
+        "text-halo-color": "hsla(0, 0%, 100%, 0.5)",
+        "text-halo-width": 1.5
+      }
+    },
+    {
       "id": "water_name_line",
       "type": "symbol",
       "source": "openmaptiles",
-      "source-layer": "water_name",
+      "source-layer": "waterway",
       "filter": [
         "all",
         [
@@ -3282,11 +3557,13 @@
       "layout": {
         "text-field": "{name}",
         "text-font": [
-          "Roboto Regular"
+          "Open Sans Regular"
         ],
-        "text-max-width": 5,
-        "text-size": 12,
-        "symbol-placement": "line"
+        "text-max-width": 10,
+        "text-size": 13,
+        "symbol-placement": "line",
+        "symbol-spacing": 350,
+        "text-padding": 5
       },
       "paint": {
         "text-color": "#5d60be",
@@ -3307,7 +3584,7 @@
       "layout": {
         "text-field": "{name}",
         "text-font": [
-          "Roboto Regular"
+          "Open Sans Semibold Italic"
         ],
         "text-max-width": 5,
         "text-size": 12
@@ -3342,14 +3619,14 @@
         "text-anchor": "top",
         "text-field": "{name}",
         "text-font": [
-          "Roboto Condensed Italic"
+          "Open Sans Italic"
         ],
         "text-max-width": 9,
         "text-offset": [
           0,
           0.6
         ],
-        "text-size": 12
+        "text-size": 11
       },
       "paint": {
         "text-color": "#666",
@@ -3387,7 +3664,7 @@
         "text-anchor": "top",
         "text-field": "{name}",
         "text-font": [
-          "Roboto Condensed Italic"
+          "Open Sans Italic"
         ],
         "text-max-width": 9,
         "text-offset": [
@@ -3432,14 +3709,14 @@
         "text-anchor": "top",
         "text-field": "{name}",
         "text-font": [
-          "Roboto Condensed Italic"
+          "Open Sans Italic"
         ],
         "text-max-width": 9,
         "text-offset": [
           0,
           0.6
         ],
-        "text-size": 12
+        "text-size": 11
       },
       "paint": {
         "text-color": "#666",
@@ -3468,20 +3745,84 @@
         "text-anchor": "left",
         "text-field": "{name_en}",
         "text-font": [
-          "Roboto Condensed Italic"
+          "Open Sans Italic"
         ],
         "text-max-width": 9,
         "text-offset": [
           0.9,
           0
         ],
-        "text-size": 12
+        "text-size": 11
       },
       "paint": {
         "text-color": "#4898ff",
         "text-halo-blur": 0.5,
         "text-halo-color": "#ffffff",
         "text-halo-width": 1
+      },
+      "minzoom": 0
+    },
+    {
+      "id": "peak_label",
+      "type": "symbol",
+      "source": "openmaptiles",
+      "source-layer": "mountain_peak",
+      "minzoom": 9,
+      "filter": [
+        "all",
+        [
+          "==",
+          "$type",
+          "Point"
+        ],
+        [
+          "<=",
+          "rank",
+          1
+        ]
+      ],
+      "layout": {
+        "icon-image": "mountain_11",
+        "text-anchor": "top",
+        "text-field": [
+          "concat",
+          [
+            "get",
+            "name"
+          ],
+          "\n",
+          [
+            "to-string",
+            [
+              "round",
+              [
+                "*",
+                [
+                  "get",
+                  "ele"
+                ],
+                3.28084
+              ]
+            ]
+          ],
+          " ft"
+        ],
+        "text-font": [
+          "Open Sans Regular"
+        ],
+        "text-max-width": 9,
+        "text-offset": [
+          0,
+          0.6
+        ],
+        "text-size": 11,
+        "icon-allow-overlap": false
+      },
+      "paint": {
+        "text-color": "rgba(30, 30, 30, 1)",
+        "text-halo-blur": 0.5,
+        "text-halo-color": "#ffffff",
+        "text-halo-width": 1.5
       }
     },
     {
@@ -3497,11 +3838,11 @@
         "text-anchor": "center",
         "text-field": "{name}",
         "text-font": [
-          "Roboto Regular"
+          "Open Sans Regular"
         ],
         "text-offset": [
           0,
-          0.15
+          0
         ],
         "text-size": {
           "base": 1,
@@ -3515,12 +3856,17 @@
               13
             ]
           ]
-        }
+        },
+        "symbol-spacing": 350,
+        "text-max-angle": 40,
+        "text-letter-spacing": 0,
+        "text-max-width": 10
       },
       "paint": {
-        "text-color": "#765",
+        "text-color": "rgba(30, 30, 30, 1)",
         "text-halo-blur": 0.5,
-        "text-halo-width": 1
+        "text-halo-width": 1.5,
+        "text-halo-color": "rgba(255, 255, 255, 1)"
       }
     },
     {
@@ -3556,11 +3902,11 @@
         "symbol-spacing": 500,
         "text-field": "{ref}",
         "text-font": [
-          "Roboto Regular"
+          "Open Sans Regular"
         ],
         "text-offset": [
           0,
-          0.1
+          0
         ],
         "text-rotation-alignment": "viewport",
         "text-size": 10,
@@ -3587,7 +3933,7 @@
       "layout": {
         "text-field": "{name_en}",
         "text-font": [
-          "Roboto Condensed Italic"
+          "Open Sans Italic"
         ],
         "text-letter-spacing": 0.1,
         "text-max-width": 9,
@@ -3628,7 +3974,7 @@
       "layout": {
         "text-field": "{name_en}",
         "text-font": [
-          "Roboto Regular"
+          "Open Sans Regular"
         ],
         "text-max-width": 8,
         "text-size": {
@@ -3681,7 +4027,7 @@
         "text-anchor": "bottom",
         "text-field": "{name_en}",
         "text-font": [
-          "Roboto Regular"
+          "Open Sans Regular"
         ],
         "text-max-width": 8,
         "text-offset": [
@@ -3739,7 +4085,7 @@
         "text-anchor": "bottom",
         "text-field": "{name_en}",
         "text-font": [
-          "Roboto Medium"
+          "Open Sans Regular"
         ],
         "text-max-width": 8,
         "text-offset": [
@@ -3785,7 +4131,7 @@
       "layout": {
         "text-field": "{name_en}",
         "text-font": [
-          "Roboto Condensed Italic"
+          "Open Sans Italic"
         ],
         "text-size": {
           "stops": [
@@ -3828,7 +4174,7 @@
       "layout": {
         "text-field": "{name_en}",
         "text-font": [
-          "Roboto Condensed Italic"
+          "Open Sans Italic"
         ],
         "text-max-width": 6.25,
         "text-size": {
@@ -3873,7 +4219,7 @@
       "layout": {
         "text-field": "{name_en}",
         "text-font": [
-          "Roboto Condensed Italic"
+          "Open Sans Italic"
         ],
         "text-max-width": 6.25,
         "text-size": {
@@ -3918,7 +4264,7 @@
       "layout": {
         "text-field": "{name_en}",
         "text-font": [
-          "Roboto Condensed Italic"
+          "Open Sans Italic"
         ],
         "text-max-width": 6.25,
         "text-size": {
@@ -3959,7 +4305,7 @@
       "layout": {
         "text-field": "{name_en}",
         "text-font": [
-          "Roboto Condensed Italic"
+          "Open Sans Italic"
         ],
         "text-size": 13,
         "text-transform": "uppercase",
@@ -3970,118 +4316,6 @@
         "text-halo-color": "rgba(255,255,255,0.7)",
         "text-halo-width": 1
       }
-    },
-    {
-      "id": "contour_label",
-      "type": "symbol",
-      "metadata": {},
-      "source": "contours",
-      "source-layer": "Elev_Contour",
-      "filter": [
-        "all",
-        [
-          "==",
-          "$type",
-          "LineString"
-        ],
-        [
-          "==",
-          "FCode",
-          10102
-        ],
-        [
-          ">",
-          "ContourElevation",
-          0
-        ]
-      ],
-      "layout": {
-        "text-size": {
-          "base": 1,
-          "stops": [
-            [
-              15,
-              9.5
-            ],
-            [
-              20,
-              12
-            ]
-          ]
-        },
-        "text-allow-overlap": false,
-        "symbol-avoid-edges": true,
-        "text-ignore-placement": false,
-        "symbol-placement": "line",
-        "text-padding": 10,
-        "text-rotation-alignment": "map",
-        "text-field": "{ContourElevation}",
-        "text-font": [
-          "Noto Sans Regular"
-        ],
-        "visibility": "visible"
-      },
-      "paint": {
-        "text-color": "rgb(131, 66, 37)",
-        "text-halo-color": "hsla(0, 0%, 100%, 0.5)",
-        "text-halo-width": 1.5
-      }
-    },
-    {
-      "id": "contour_index",
-      "type": "line",
-      "source": "contours",
-      "source-layer": "Elev_Contour",
-      "filter": [
-        "all",
-        [
-          ">",
-          "ContourElevation",
-          0
-        ],
-        [
-          "==",
-          "FCode",
-          10102
-        ]
-      ],
-      "layout": {
-        "visibility": "visible"
-      },
-      "paint": {
-        "line-color": "rgb(166, 116, 66)",
-        "line-opacity": 0.4,
-        "line-width": 1.1
-      },
-      "minzoom": 0
-    },
-    {
-      "id": "contour",
-      "type": "line",
-      "source": "contours",
-      "source-layer": "Elev_Contour",
-      "filter": [
-        "all",
-        [
-          "==",
-          "FCode",
-          10101
-        ],
-        [
-          ">",
-          "ContourElevation",
-          0
-        ]
-      ],
-      "layout": {
-        "visibility": "visible"
-      },
-      "paint": {
-        "line-color": "rgb(179, 134, 89)",
-        "line-opacity": 0.3,
-        "line-width": 0.6
-      },
-      "minzoom": 7
     }
   ],
   "id": "osm-liberty"
