@@ -189,7 +189,18 @@
       },
       "paint": {
         "line-color": "rgb(166, 116, 66)",
-        "line-opacity": 0.4,
+        "line-opacity": {
+          "stops": [
+            [
+              11,
+              0.2
+            ],
+            [
+              14,
+              0.4
+            ]
+          ]
+        },
         "line-width": 1.1
       },
       "minzoom": 0
@@ -217,8 +228,30 @@
       },
       "paint": {
         "line-color": "rgb(179, 134, 89)",
-        "line-opacity": 0.3,
-        "line-width": 0.6
+        "line-opacity": {
+          "stops": [
+            [
+              11,
+              0.2
+            ],
+            [
+              14,
+              0.4
+            ]
+          ]
+        },
+        "line-width": {
+          "stops": [
+            [
+              11,
+              0.4
+            ],
+            [
+              14,
+              0.6
+            ]
+          ]
+        }
       },
       "minzoom": 7
     },
