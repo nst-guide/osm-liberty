@@ -3664,7 +3664,7 @@
         "text-anchor": "top",
         "text-field": "{name}",
         "text-font": [
-          "Roboto Condensed Italic"
+          "Open Sans Italic"
         ],
         "text-max-width": 9,
         "text-offset": [
@@ -4174,7 +4174,7 @@
       "layout": {
         "text-field": "{name_en}",
         "text-font": [
-          "Roboto Condensed Italic"
+          "Open Sans Italic"
         ],
         "text-max-width": 6.25,
         "text-size": {
@@ -4219,7 +4219,7 @@
       "layout": {
         "text-field": "{name_en}",
         "text-font": [
-          "Roboto Condensed Italic"
+          "Open Sans Italic"
         ],
         "text-max-width": 6.25,
         "text-size": {
@@ -4264,7 +4264,7 @@
       "layout": {
         "text-field": "{name_en}",
         "text-font": [
-          "Roboto Condensed Italic"
+          "Open Sans Italic"
         ],
         "text-max-width": 6.25,
         "text-size": {
@@ -4305,7 +4305,7 @@
       "layout": {
         "text-field": "{name_en}",
         "text-font": [
-          "Roboto Condensed Italic"
+          "Open Sans Italic"
         ],
         "text-size": 13,
         "text-transform": "uppercase",
