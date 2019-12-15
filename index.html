@@ -19,8 +19,11 @@
       style: 'https://raw.githubusercontent.com/nst-guide/osm-liberty-topo/gh-pages/style.json',
       center: [-119.5936, 37.7456],
       zoom: 12,
-      hash: true
+      hash: true,
+      maxBounds: [[-130, 30], [-110, 55]]
   });
+
+  map.addControl(new mapboxgl.NavigationControl());
   </script>
 </body>
 </html>
