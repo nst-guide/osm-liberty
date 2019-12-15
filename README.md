@@ -1,28 +1,32 @@
-# OSM Liberty [![BSD licensed](https://img.shields.io/badge/license-BSD-blue.svg)](https://github.com/maputnik/osm-liberty/blob/gh-pages/LICENSE.md) [![Build Status](https://travis-ci.org/maputnik/osm-liberty.svg?branch=gh-pages)](https://travis-ci.org/maputnik/osm-liberty)
+# OSM Liberty Topo [![BSD licensed](https://img.shields.io/badge/license-BSD-blue.svg)](https://github.com/maputnik/osm-liberty/blob/gh-pages/LICENSE.md)
 
 <img align="right" alt="OSM Liberty" src="logo.png" />
 
-A free Mapbox GL basemap style for everyone with complete liberty to use and self host. OSM Liberty is a fork of OSM Bright based on free data sources with a mission for a clear good looking design for the everyday user. It is based on the vector tile schema of [OpenMapTiles](https://github.com/openmaptiles/openmaptiles).
+A free Mapbox GL basemap style for everyone with complete liberty to use and
+self host. OSM Liberty Topo is a fork of OSM Liberty, which is itself a fork of
+OSM Bright. OSM Liberty Topo is based on free data sources with a mission for a
+clear good looking design for the everyday user. It is based on the vector tile
+schema of [OpenMapTiles](https://github.com/openmaptiles/openmaptiles).
 
-**[Preview OSM Liberty with Maputnik](https://maputnik.github.io/editor/?style=https://maputnik.github.io/osm-liberty/style.json)**
+**[Preview OSM Liberty Topo with Maputnik](https://raw.githubusercontent.com/nst-guide/osm-liberty-topo/gh-pages/style.json)**
 
 
-## Fork
+## Overview
 
 The main changes of this fork compared to the original:
 
-- Contours layer, using 40' contours data from USGS, created in [this repository](https://github.com/nst-guide/contours).
+- Contours layer, using 40' contours data from USGS, created from [this repository](https://github.com/nst-guide/contours).
 - Hillshade layer, using generated tiles conforming to the Mapbox Terrain RGB standard, created from [this repository](https://github.com/nst-guide/hillshade)
-- Uses Open Sans fonts instead of Roboto. Pregenerated Open Sans and Roboto font stacks can be downloaded from the [openmaptiles/fonts releases](https://github.com/openmaptiles/fonts/releases).
+- Uses Open Sans fonts instead of Roboto.
 - Puts more focus on trails, and adds mountain peaks
 
 #### `style.json` vs `style-png.json`
 
-When creating a [terrain-rgb hillshade](://github.com/nst-guide/hillshade), the
-output tiles can be in either `png` or `webp` format. The `webp` output format
-has ~30-40% smaller file sizes, which mean less bandwidth cost and faster load
-times for users. However, older browsers and all iOS browsers don't currently
-support `webp` images, so I store `png` images as a fallback.
+When creating a [terrain-rgb hillshade](https://github.com/nst-guide/hillshade),
+the output tiles can be in either `png` or `webp` format. The `webp` output
+format has ~30-40% smaller file sizes, which mean less bandwidth cost and faster
+load times for users. However, older browsers and all iOS browsers don't
+currently support `webp` images, so I store `png` images as a fallback.
 
 I develop with `style.json` and then copy changes to `style-png.json`, changing
 just the terrain rgb source.
@@ -35,42 +39,56 @@ Currently, the only fonts used are:
 - Open Sans Semibold Italic
 - Open Sans Italic
 
-The full ranges for each of these three font stacks are in the `fonts/` directory.
+The full ranges for each of these three font stacks are in the `fonts/`
+directory. Alternatively, pregenerated Open Sans and Roboto font stacks can be
+downloaded from
+[openmaptiles/fonts](https://github.com/openmaptiles/fonts/releases).
 
 ## Usage
 
-You can use the style in your Mapbox GL maps.
+You can use this style in your Mapbox GL maps by copying the `style.json` file
+and pointing to its URL whenever Mapbox asks for a style URL.
 
-By default, the vector tiles and glyphs are served from [Maptiler Cloud](https://www.maptiler.com/cloud/) and the raster tiles and sprites directly from GitHub.
-You would need to [subscribe](https://www.maptiler.com/cloud/plans) to Maptiler Cloud to get an access key and replace the placeholder {key} for the [vector source](https://github.com/maputnik/osm-liberty/blob/gh-pages/style.json#L11) and [glyphs](https://github.com/maputnik/osm-liberty/blob/gh-pages/style.json#L23) with your own key.
+You will, however, need to adjust the `source` URLs in `style.json` to point to
+other sources. For the OSM vector tiles, you can either subscribe to [Maptiler
+Cloud](https://www.maptiler.com/cloud/) or generate them yourself with the
+[OpenMapTiles](https://github.com/openmaptiles/openmaptiles) project.
 
+For the hillshading and contours layers, you'll need to generate them yourself.
+Instructions for generating the hillshade are
+[here](https://github.com/nst-guide/hillshade), and instructions for the
+contours are [here](https://github.com/nst-guide/contours). Currently, these
+repositories use data from the US Geological Survey, and thus work only for the
+United States.
 
-Another option is to create your own vector tiles with [OpenMapTiles](https://github.com/openmaptiles/openmaptiles) and host the tiles and assets yourself for complete liberty.
+By default, the fonts and sprites are served from this Github repository.
 
 ```html
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset=utf-8 />
-  <title>OSM Liberty</title>
+  <title>OSM Liberty Topo</title>
   <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
   <style>
     body { margin:0; padding:0; }
     #map { position:absolute; top:0; bottom:0; width:100%; }
   </style>
-  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.js'></script>
-  <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.css' rel='stylesheet' />
+  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.6.0/mapbox-gl.js'></script>
+  <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.6.0/mapbox-gl.css' rel='stylesheet' />
 </head>
 <body>
   <div id='map'></div>
   <script>
   var map = new mapboxgl.Map({
       container: 'map',
-      style: 'https://maputnik.github.io/osm-liberty/style.json',
-      center: [8.538961,47.372476],
-      zoom: 5,
+      style: 'https://raw.githubusercontent.com/nst-guide/osm-liberty-topo/gh-pages/style.json',
+      center: [-119.5936, 37.7456],
+      zoom: 12,
       hash: true
   });
+
+  map.addControl(new mapboxgl.NavigationControl());
   </script>
 </body>
 </html>
@@ -79,21 +97,21 @@ Another option is to create your own vector tiles with [OpenMapTiles](https://gi
 ## Data Sources
 
 - [OpenMapTiles](http://openmaptiles.org/) as vector data source
-- [Natural Earth Tiles](https://klokantech.github.io/naturalearthtiles/) for relief shading
+- [Natural Earth Tiles](https://klokantech.github.io/naturalearthtiles/) for low-zoom relief shading
 - [Maki](https://www.mapbox.com/maki-icons/) as icon set
+- [USGS 1/3rd arc-second DEM files](https://www.usgs.gov/core-science-systems/ngp/3dep/about-3dep-products-services)
+- USGS 40' contours
 
 ## Map Design
 
 The map design originates from OSM Bright but strives to reach a unobtrusive and clean design for everyday use.
 Colored relief shading from Natural Earth make the low zoom levels look good.
 
-[![OSM Liberty Map demo](demo/zoom.gif)](https://maputnik.github.io/osm-liberty/)
+<!-- [![OSM Liberty Map demo](demo/zoom.gif)](https://maputnik.github.io/osm-liberty/) -->
 
 ## Edit the Style
 
-You can [edit the style directly online in Maputnik](https://maputnik.github.io/editor?style=https://maputnik.github.io/osm-liberty/style.json).
-
-This style actually triggered the need for the development of [Maputnik](https://github.com/maputnik/editor/).
+You can [edit the style directly online in Maputnik](https://maputnik.github.io/editor?style=https://raw.githubusercontent.com/nst-guide/osm-liberty-topo/gh-pages/style.json).
 
 ## Icon Design
 
