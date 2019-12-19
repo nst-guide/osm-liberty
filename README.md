@@ -8,8 +8,7 @@ OSM Bright. OSM Liberty Topo is based on free data sources with a mission for a
 clear good looking design for the everyday user. It is based on the vector tile
 schema of [OpenMapTiles](https://github.com/openmaptiles/openmaptiles).
 
-**[Preview OSM Liberty Topo with Maputnik](https://raw.githubusercontent.com/nst-guide/osm-liberty-topo/gh-pages/style.json)**
-
+**[Preview OSM Liberty Topo with Maputnik](https://maputnik.github.io/editor/?style=https://raw.githubusercontent.com/nst-guide/osm-liberty-topo/gh-pages/style.json)**
 
 ## Overview
 
