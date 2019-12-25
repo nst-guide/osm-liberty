@@ -236,7 +236,18 @@
       "paint": {
         "hillshade-shadow-color": "hsl(39, 21%, 33%)",
         "hillshade-illumination-direction": 315,
-        "hillshade-exaggeration": 0.8
+        "hillshade-exaggeration": {
+          "stops": [
+            [
+              6,
+              0.8
+            ],
+            [
+              14,
+              0.2
+            ]
+          ]
+        }
       },
       "layout": {
         "visibility": "visible"
