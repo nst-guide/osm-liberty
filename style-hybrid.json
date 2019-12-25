@@ -18,10 +18,20 @@
       ],
       "type": "raster"
     },
+    "naip": {
+      "minzoom": 4,
+      "maxzoom": 16,
+      "tileSize": 512,
+      "tiles": [
+        "https://tiles.nst.guide/naip-png/{z}/{x}/{y}.png"
+      ],
+      "type": "raster",
+      "scheme": "tms"
+    },
     "terrain-rgb": {
       "type": "raster-dem",
       "tiles": [
-        "https://tiles.nst.guide/terrain-rgb-png/{z}/{x}/{y}.png"
+        "https://tiles.nst.guide/terrain-rgb-webp/{z}/{x}/{y}.png"
       ],
       "minzoom": 0,
       "maxzoom": 12,
@@ -85,20 +95,6 @@
           1.5
         ],
         "line-color": "rgba(228, 241, 215, 1)"
-      }
-    },
-    {
-      "id": "terrain-rgb",
-      "source": "terrain-rgb",
-      "type": "hillshade",
-      "minzoom": 0,
-      "paint": {
-        "hillshade-shadow-color": "hsl(39, 21%, 33%)",
-        "hillshade-illumination-direction": 315,
-        "hillshade-exaggeration": 0.8
-      },
-      "layout": {
-        "visibility": "visible"
       }
     },
     {
@@ -167,95 +163,6 @@
       }
     },
     {
-      "id": "contour_index",
-      "type": "line",
-      "source": "contours",
-      "source-layer": "Elev_Contour",
-      "filter": [
-        "all",
-        [
-          ">",
-          "ContourElevation",
-          0
-        ],
-        [
-          "==",
-          "FCode",
-          10102
-        ]
-      ],
-      "layout": {
-        "visibility": "visible"
-      },
-      "paint": {
-        "line-color": "rgb(166, 116, 66)",
-        "line-opacity": {
-          "stops": [
-            [
-              11,
-              0.2
-            ],
-            [
-              14,
-              0.4
-            ]
-          ]
-        },
-        "line-width": 1.1
-      },
-      "minzoom": 0
-    },
-    {
-      "id": "contour",
-      "type": "line",
-      "source": "contours",
-      "source-layer": "Elev_Contour",
-      "filter": [
-        "all",
-        [
-          "==",
-          "FCode",
-          10101
-        ],
-        [
-          ">",
-          "ContourElevation",
-          0
-        ]
-      ],
-      "layout": {
-        "visibility": "visible"
-      },
-      "paint": {
-        "line-color": "rgb(179, 134, 89)",
-        "line-opacity": {
-          "stops": [
-            [
-              11,
-              0.2
-            ],
-            [
-              14,
-              0.4
-            ]
-          ]
-        },
-        "line-width": {
-          "stops": [
-            [
-              11,
-              0.4
-            ],
-            [
-              14,
-              0.6
-            ]
-          ]
-        }
-      },
-      "minzoom": 7
-    },
-    {
       "id": "landuse_cemetery",
       "type": "fill",
       "source": "openmaptiles",
@@ -295,6 +202,44 @@
       ],
       "paint": {
         "fill-color": "rgb(236,238,204)"
+      }
+    },
+    {
+      "id": "water",
+      "type": "fill",
+      "source": "openmaptiles",
+      "source-layer": "water",
+      "paint": {
+        "fill-color": "rgb(158,189,255)"
+      },
+      "layout": {
+        "visibility": "visible"
+      }
+    },
+    {
+      "id": "naip-hybrid",
+      "type": "raster",
+      "source": "naip",
+      "minzoom": 4,
+      "paint": {
+        "raster-opacity": 1
+      },
+      "layout": {
+        "visibility": "visible"
+      }
+    },
+    {
+      "id": "terrain-rgb",
+      "source": "terrain-rgb",
+      "type": "hillshade",
+      "minzoom": 0,
+      "paint": {
+        "hillshade-shadow-color": "hsl(39, 21%, 33%)",
+        "hillshade-illumination-direction": 315,
+        "hillshade-exaggeration": 0.8
+      },
+      "layout": {
+        "visibility": "visible"
       }
     },
     {
@@ -410,13 +355,93 @@
       }
     },
     {
-      "id": "water",
-      "type": "fill",
-      "source": "openmaptiles",
-      "source-layer": "water",
+      "id": "contour",
+      "type": "line",
+      "source": "contours",
+      "source-layer": "Elev_Contour",
+      "filter": [
+        "all",
+        [
+          "==",
+          "FCode",
+          10101
+        ],
+        [
+          ">",
+          "ContourElevation",
+          0
+        ]
+      ],
+      "layout": {
+        "visibility": "visible"
+      },
       "paint": {
-        "fill-color": "rgb(158,189,255)"
-      }
+        "line-color": "rgb(179, 134, 89)",
+        "line-opacity": {
+          "stops": [
+            [
+              11,
+              0.2
+            ],
+            [
+              14,
+              0.4
+            ]
+          ]
+        },
+        "line-width": {
+          "stops": [
+            [
+              11,
+              0.4
+            ],
+            [
+              14,
+              0.6
+            ]
+          ]
+        }
+      },
+      "minzoom": 7
+    },
+    {
+      "id": "contour_index",
+      "type": "line",
+      "source": "contours",
+      "source-layer": "Elev_Contour",
+      "filter": [
+        "all",
+        [
+          ">",
+          "ContourElevation",
+          0
+        ],
+        [
+          "==",
+          "FCode",
+          10102
+        ]
+      ],
+      "layout": {
+        "visibility": "visible"
+      },
+      "paint": {
+        "line-color": "rgb(166, 116, 66)",
+        "line-opacity": {
+          "stops": [
+            [
+              11,
+              0.2
+            ],
+            [
+              14,
+              0.4
+            ]
+          ]
+        },
+        "line-width": 1.1
+      },
+      "minzoom": 0
     },
     {
       "id": "landcover_sand",
@@ -4362,6 +4387,18 @@
         "text-color": "#633",
         "text-halo-color": "rgba(255,255,255,0.7)",
         "text-halo-width": 1
+      }
+    },
+    {
+      "id": "naip",
+      "type": "raster",
+      "source": "naip",
+      "minzoom": 4,
+      "paint": {
+        "raster-opacity": 1
+      },
+      "layout": {
+        "visibility": "none"
       }
     }
   ],
