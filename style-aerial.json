@@ -23,7 +23,7 @@
       "maxzoom": 16,
       "tileSize": 512,
       "tiles": [
-        "https://tiles.nst.guide/naip-png/{z}/{x}/{y}.png"
+        "https://tiles.nst.guide/naip-webp/{z}/{x}/{y}.png"
       ],
       "type": "raster",
       "scheme": "tms"
