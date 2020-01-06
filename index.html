@@ -12,7 +12,25 @@
   <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.6.0/mapbox-gl.css' rel='stylesheet' />
 </head>
 <body>
+  <style>
+    #menu {
+    position: absolute;
+    padding: 20px;
+    font-family: 'Open Sans', sans-serif;
+    }
+  </style>
+
   <div id='map'></div>
+  <div id="menu">
+    <select>
+      <option value="style">OSM Liberty Topo (webp)</option>
+      <option value="style-png">OSM Liberty Topo (png)</option>
+      <option value="style-hybrid">Aerial Hybrid (webp)</option>
+      <option value="style-hybrid-png">Aerial Hybrid (png)</option>
+      <option value="style-aerial">Aerial (webp)</option>
+      <option value="style-aerial-png">Aerial (png)</option>
+    </select>
+ </div>
   <script>
   var map = new mapboxgl.Map({
       container: 'map',
@@ -24,6 +42,16 @@
   });
 
   map.addControl(new mapboxgl.NavigationControl());
+
+  var layerList = document.getElementById('menu');
+  var select = layerList.getElementsByTagName('select');
+
+  function switchLayer(layer) {
+    var layerId = layer.target.value;
+    map.setStyle('https://raw.githubusercontent.com/nst-guide/osm-liberty-topo/gh-pages/' + layerId + '.json');
+  }
+
+  select[0].onchange = switchLayer;
   </script>
 </body>
 </html>
