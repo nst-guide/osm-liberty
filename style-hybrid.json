@@ -1849,9 +1849,10 @@
           "pedestrian"
         ],
         [
-          "!=",
+          "!in",
           "subclass",
-          "path"
+          "path",
+          "footway"
         ]
       ],
       "layout": {
@@ -1898,9 +1899,10 @@
           "pedestrian"
         ],
         [
-          "==",
+          "in",
           "subclass",
-          "path"
+          "path",
+          "footway"
         ],
         [
           "==",
@@ -1956,9 +1958,10 @@
           "pedestrian"
         ],
         [
-          "==",
+          "in",
           "subclass",
-          "path"
+          "path",
+          "footway"
         ]
       ],
       "layout": {

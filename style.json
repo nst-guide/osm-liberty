@@ -1813,9 +1813,10 @@
           "pedestrian"
         ],
         [
-          "!=",
+          "!in",
           "subclass",
-          "path"
+          "path",
+          "footway"
         ]
       ],
       "layout": {
@@ -1862,9 +1863,10 @@
           "pedestrian"
         ],
         [
-          "==",
+          "in",
           "subclass",
-          "path"
+          "path",
+          "footway"
         ],
         [
           "==",
@@ -1892,7 +1894,8 @@
           ]
         },
         "line-opacity": 1
-      }
+      },
+      "minzoom": 0
     },
     {
       "id": "road_path_pedestrian_trail",
@@ -1920,9 +1923,10 @@
           "pedestrian"
         ],
         [
-          "==",
+          "in",
           "subclass",
-          "path"
+          "path",
+          "footway"
         ]
       ],
       "layout": {
