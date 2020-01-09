@@ -1884,9 +1884,10 @@
           "pedestrian"
         ],
         [
-          "==",
+          "in",
           "subclass",
-          "path"
+          "path",
+          "footway"
         ],
         [
           "==",
@@ -1905,16 +1906,28 @@
           "stops": [
             [
               12,
-              2.5
+              1
             ],
             [
-              20,
-              5
+              16,
+              4
             ]
           ]
         },
-        "line-opacity": 1
-      }
+        "line-opacity": {
+          "stops": [
+            [
+              12,
+              0.5
+            ],
+            [
+              14,
+              1
+            ]
+          ]
+        }
+      },
+      "minzoom": 0
     },
     {
       "id": "road_path_pedestrian_trail",
@@ -1942,9 +1955,10 @@
           "pedestrian"
         ],
         [
-          "==",
+          "in",
           "subclass",
-          "path"
+          "path",
+          "footway"
         ]
       ],
       "layout": {
@@ -1954,19 +1968,19 @@
       "paint": {
         "line-color": "rgba(255, 255, 255, 1)",
         "line-dasharray": [
-          1.5,
+          2.5,
           1
         ],
         "line-width": {
           "base": 1.2,
           "stops": [
             [
-              12,
-              1
+              13,
+              0.5
             ],
             [
-              20,
-              4
+              16,
+              2
             ]
           ]
         },
