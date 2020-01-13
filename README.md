@@ -164,8 +164,9 @@ Colored relief shading from Natural Earth make the low zoom levels look good.
 You can [edit the style directly online in
 Maputnik](https://maputnik.github.io/editor?style=https://raw.githubusercontent.com/nst-guide/osm-liberty-topo/gh-pages/style.json).
 
-A pre-commit hook is included to validate and format the JSON styles. To use,
-just install the NPM dev dependencies:
+A pre-commit hook is included to validate and format the JSON styles using
+[`mapbox-gl-style-spec`](https://www.npmjs.com/package/@mapbox/mapbox-gl-style-spec).
+To use, just install the NPM dev dependencies:
 ```
 npm install
 ```
