@@ -23,11 +23,12 @@
   "homepage": "https://github.com/nst-guide/osm-liberty-topo#readme",
   "devDependencies": {
     "@mapbox/mapbox-gl-style-spec": "^13.10.2",
-    "husky": "^4.0.7"
+    "husky": "^4.0.7",
+    "sponge": "^0.1.0"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "./node_modules/.bin/gl-style-validate style*.json"
+      "pre-commit": "for file in $(git diff --name-only --cached | grep 'style'); do ./node_modules/.bin/gl-style-validate $file && ./node_modules/.bin/gl-style-format $file | ./node_modules/.bin/sponge $file && git add $file; done;"
     }
   }
 }
