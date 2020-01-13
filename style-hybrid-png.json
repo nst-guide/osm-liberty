@@ -42,8 +42,8 @@
       "url": "https://tiles.nst.guide/contours/tile.json"
     }
   },
-  "sprite": "https://maputnik.github.io/osm-liberty/sprites/osm-liberty",
-  "glyphs": "https://raw.githubusercontent.com/nst-guide/osm-liberty/gh-pages/fonts/{fontstack}/{range}.pbf",
+  "sprite": "https://raw.githubusercontent.com/nst-guide/osm-liberty-topo/gh-pages/sprites/osm-liberty",
+  "glyphs": "https://raw.githubusercontent.com/nst-guide/osm-liberty-topo/gh-pages/fonts/{fontstack}/{range}.pbf",
   "layers": [
     {
       "id": "background",
