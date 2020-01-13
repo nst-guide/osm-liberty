@@ -1,0 +1,33 @@
+{
+  "name": "osm-liberty-topo",
+  "version": "0.1.0",
+  "description": "A free topographic Mapbox GL basemap style for everyone",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nst-guide/osm-liberty-topo.git"
+  },
+  "keywords": [
+    "maps",
+    "cartography",
+    "mapbox-gl",
+    "mapbox-gl-js"
+  ],
+  "author": "Kyle Barron",
+  "bugs": {
+    "url": "https://github.com/nst-guide/osm-liberty-topo/issues"
+  },
+  "homepage": "https://github.com/nst-guide/osm-liberty-topo#readme",
+  "devDependencies": {
+    "@mapbox/mapbox-gl-style-spec": "^13.10.2",
+    "husky": "^4.0.7"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "./node_modules/.bin/gl-style-validate style*.json"
+    }
+  }
+}
