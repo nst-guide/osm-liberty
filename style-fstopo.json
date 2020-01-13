@@ -3832,6 +3832,208 @@
       "minzoom": 0
     },
     {
+      "id": "poi_toilets",
+      "type": "symbol",
+      "source": "openmaptiles",
+      "source-layer": "poi",
+      "filter": [
+        "all",
+        [
+          "==",
+          "class",
+          "toilets"
+        ]
+      ],
+      "layout": {
+        "icon-image": "toilet_11",
+        "text-anchor": "left",
+        "text-field": "",
+        "text-font": [
+          "Open Sans Italic"
+        ],
+        "text-max-width": 9,
+        "text-offset": [
+          0.9,
+          0
+        ],
+        "text-size": 11,
+        "icon-size": {
+          "stops": [
+            [
+              14,
+              0.65
+            ],
+            [
+              16,
+              1
+            ]
+          ]
+        }
+      },
+      "paint": {
+        "text-color": "#4898ff",
+        "text-halo-blur": 0.5,
+        "text-halo-color": "#ffffff",
+        "text-halo-width": 1
+      },
+      "minzoom": 0
+    },
+    {
+      "id": "poi_campsite",
+      "type": "symbol",
+      "source": "openmaptiles",
+      "source-layer": "poi",
+      "minzoom": 14,
+      "filter": [
+        "all",
+        [
+          "==",
+          "$type",
+          "Point"
+        ],
+        [
+          "==",
+          "class",
+          "campsite"
+        ]
+      ],
+      "layout": {
+        "icon-image": "campsite_11",
+        "text-anchor": "top",
+        "text-field": "",
+        "text-font": [
+          "Open Sans Regular"
+        ],
+        "text-max-width": 9,
+        "text-offset": [
+          0,
+          0.6
+        ],
+        "text-size": 11,
+        "icon-allow-overlap": false,
+        "visibility": "visible",
+        "icon-size": {
+          "stops": [
+            [
+              14,
+              0.65
+            ],
+            [
+              16,
+              1
+            ]
+          ]
+        }
+      },
+      "paint": {
+        "text-color": "rgba(30, 30, 30, 1)",
+        "text-halo-blur": 0.5,
+        "text-halo-color": "#ffffff",
+        "text-halo-width": 1.5
+      }
+    },
+    {
+      "id": "poi_drinking_water",
+      "type": "symbol",
+      "source": "openmaptiles",
+      "source-layer": "poi",
+      "minzoom": 13,
+      "filter": [
+        "all",
+        [
+          "==",
+          "$type",
+          "Point"
+        ],
+        [
+          "==",
+          "class",
+          "drinking_water"
+        ]
+      ],
+      "layout": {
+        "icon-image": "drinking-water_11",
+        "icon-allow-overlap": false,
+        "icon-size": {
+          "stops": [
+            [
+              14,
+              0.65
+            ],
+            [
+              16,
+              1
+            ]
+          ]
+        }
+      },
+      "paint": {}
+    },
+    {
+      "id": "poi_spring",
+      "type": "symbol",
+      "source": "openmaptiles",
+      "source-layer": "poi",
+      "minzoom": 13,
+      "filter": [
+        "all",
+        [
+          "==",
+          "$type",
+          "Point"
+        ],
+        [
+          "==",
+          "class",
+          "spring"
+        ]
+      ],
+      "layout": {
+        "icon-image": "water_11",
+        "text-anchor": "top",
+        "text-field": [
+          "case",
+          [
+            "has",
+            "name"
+          ],
+          [
+            "get",
+            "name"
+          ],
+          "Spring"
+        ],
+        "text-font": [
+          "Open Sans Regular"
+        ],
+        "text-max-width": 9,
+        "text-offset": [
+          0,
+          0.6
+        ],
+        "text-size": 11,
+        "icon-allow-overlap": false,
+        "icon-size": {
+          "stops": [
+            [
+              14,
+              0.65
+            ],
+            [
+              16,
+              1
+            ]
+          ]
+        }
+      },
+      "paint": {
+        "text-color": "rgba(30, 30, 30, 1)",
+        "text-halo-blur": 0.5,
+        "text-halo-color": "#ffffff",
+        "text-halo-width": 1.5
+      }
+    },
+    {
       "id": "peak_label",
       "type": "symbol",
       "source": "openmaptiles",
