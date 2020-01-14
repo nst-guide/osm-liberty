@@ -4,7 +4,10 @@
   "description": "A free topographic Mapbox GL basemap style for everyone",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "validate": "for file in style*.json; do ./node_modules/.bin/gl-style-validate $file; done",
+    "diff": "for file in style*.json; do bash -c 'diff <(./node_modules/.bin/gl-style-format $file) $file'; done",
+    "format": "for file in style*.json; do ./node_modules/.bin/gl-style-format $file | ./node_modules/.bin/sponge $file; done"
   },
   "repository": {
     "type": "git",
