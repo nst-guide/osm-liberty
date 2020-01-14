@@ -216,7 +216,7 @@
       "layout": {"line-cap": "square", "visibility": "visible"},
       "paint": {
         "line-color": "#a0c8f0",
-        "line-width": {"base": 1.3, "stops": [[11, 0.7], [16, 1.8], [20, 6]]},
+        "line-width": {"base": 1.3, "stops": [[11, 0.5], [16, 1.5], [20, 6]]},
         "line-dasharray": [3, 2],
         "line-opacity": {"stops": [[11, 0.8], [13, 1]]}
       }
