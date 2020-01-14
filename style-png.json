@@ -207,7 +207,8 @@
       "layout": {"line-cap": "round"},
       "paint": {
         "line-color": "#a0c8f0",
-        "line-width": {"base": 1.3, "stops": [[11, 1.5], [20, 6]]}
+        "line-width": {"base": 1.3, "stops": [[11, 0.8], [16, 1.8], [20, 6]]},
+        "line-opacity": {"stops": [[11, 0.7], [13, 1]]}
       }
     },
     {
@@ -219,8 +220,9 @@
       "layout": {"line-cap": "square", "visibility": "visible"},
       "paint": {
         "line-color": "#a0c8f0",
-        "line-width": {"base": 1.3, "stops": [[11, 1.5], [20, 6]]},
-        "line-dasharray": [3, 2]
+        "line-width": {"base": 1.3, "stops": [[11, 0.8], [16, 1.8], [20, 6]]},
+        "line-dasharray": [3, 2],
+        "line-opacity": {"stops": [[11, 0.8], [13, 1]]}
       }
     },
     {
