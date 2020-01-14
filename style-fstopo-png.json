@@ -1636,6 +1636,31 @@
       }
     },
     {
+      "id": "poi_saddle",
+      "type": "symbol",
+      "source": "openmaptiles",
+      "source-layer": "poi",
+      "minzoom": 13,
+      "filter": ["all", ["==", "$type", "Point"], ["==", "class", "saddle"]],
+      "layout": {
+        "icon-image": "viewpoint_11",
+        "text-anchor": "top",
+        "text-field": ["case", ["has", "name"], ["get", "name"], "Pass"],
+        "text-font": ["Open Sans Regular"],
+        "text-max-width": 9,
+        "text-offset": [0, 0.6],
+        "text-size": 11,
+        "icon-allow-overlap": false,
+        "icon-size": {"stops": [[14, 0.65], [16, 1]]}
+      },
+      "paint": {
+        "text-color": "rgba(30, 30, 30, 1)",
+        "text-halo-blur": 0.5,
+        "text-halo-color": "#ffffff",
+        "text-halo-width": 1.5
+      }
+    },
+    {
       "id": "peak_label",
       "type": "symbol",
       "source": "openmaptiles",
