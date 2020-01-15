@@ -1628,7 +1628,7 @@
       "id": "poi_spring",
       "type": "symbol",
       "source": "openmaptiles",
-      "source-layer": "poi",
+      "source-layer": "mountain_peak",
       "minzoom": 13,
       "filter": ["all", ["==", "$type", "Point"], ["==", "class", "spring"]],
       "layout": {
