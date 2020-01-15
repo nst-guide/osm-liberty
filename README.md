@@ -18,10 +18,11 @@ The main changes of this fork compared to the original:
 - Contours layer, using 40' contours data from USGS, created from [this repository](https://github.com/nst-guide/contours).
 - Hillshade layer, using generated tiles conforming to the Mapbox Terrain RGB standard, created from [this repository](https://github.com/nst-guide/terrain)
 - Uses Open Sans fonts instead of Roboto.
-- Puts more focus on trails, and adds mountain peaks
-- Includes POIs for campsites, toilets, springs and `drinking_water` sources.
-  (Note, the OSM tags `natural=spring` and `amenity=drinking_water` are
-  currently not included in the main OpenMapTiles schema. My
+- Puts more focus on trails
+- Includes POIs for mountain peaks, mountain passes, campsites, toilets, springs
+  and `drinking_water` sources. (Note, the OSM tags `natural=saddle`,
+  `natural=spring` and `amenity=drinking_water` are currently not included in
+  the main OpenMapTiles schema. My
   [`nst-guide/openmaptiles`](https://github.com/nst-guide/openmaptiles) fork
   includes them in the vector tiles.)
 
