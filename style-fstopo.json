@@ -1676,21 +1676,60 @@
       }
     },
     {
-      "id": "peak_label",
+      "id": "poi_peak_rank1",
       "type": "symbol",
       "source": "openmaptiles",
       "source-layer": "mountain_peak",
-      "minzoom": 9,
+      "minzoom": 7,
       "filter": [
         "all",
         ["==", "$type", "Point"],
         ["<=", "rank", 1],
         ["!in", "name", "peak", ""],
         ["has", "ele"],
-        ["has", "name"]
+        ["has", "name"],
+        ["==", "class", "peak"]
       ],
       "layout": {
         "icon-image": "mountain_11",
+        "text-anchor": "top",
+        "text-field": [
+          "concat",
+          ["get", "name"],
+          "\n",
+          ["to-string", ["round", ["*", ["get", "ele"], 3.28084]]],
+          " ft"
+        ],
+        "text-font": ["Open Sans Regular"],
+        "text-max-width": 9,
+        "text-offset": [0, 0.6],
+        "text-size": 11,
+        "icon-allow-overlap": false
+      },
+      "paint": {
+        "text-color": "rgba(30, 30, 30, 1)",
+        "text-halo-blur": 0.5,
+        "text-halo-color": "#ffffff",
+        "text-halo-width": 1.5
+      }
+    },
+    {
+      "id": "poi_volcano_rank1",
+      "type": "symbol",
+      "source": "openmaptiles",
+      "source-layer": "mountain_peak",
+      "minzoom": 7,
+      "filter": [
+        "all",
+        ["==", "$type", "Point"],
+        ["<=", "rank", 1],
+        ["!in", "name", "peak", ""],
+        ["has", "ele"],
+        ["has", "name"],
+        ["==", "class", "volcano"]
+      ],
+      "layout": {
+        "icon-image": "volcano_11",
         "text-anchor": "top",
         "text-field": [
           "concat",
