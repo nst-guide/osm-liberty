@@ -773,9 +773,9 @@
       ],
       "layout": {"line-cap": "round", "line-join": "round"},
       "paint": {
-        "line-color": "rgba(206, 172, 52, 1)",
+        "line-color": "rgb(206, 172, 52)",
         "line-width": {"base": 1.2, "stops": [[12, 1], [16, 4]]},
-        "line-opacity": {"stops": [[12, 0.5], [14, 1]]}
+        "line-opacity": {"stops": [[12, 0.3], [14, 1]]}
       }
     },
     {
