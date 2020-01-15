@@ -763,7 +763,7 @@
       "type": "line",
       "source": "openmaptiles",
       "source-layer": "transportation",
-      "minzoom": 0,
+      "minzoom": 12,
       "filter": [
         "all",
         ["!in", "brunnel", "bridge", "tunnel"],
@@ -1069,12 +1069,30 @@
         "all",
         ["==", "$type", "LineString"],
         ["==", "brunnel", "bridge"],
-        ["in", "class", "path", "pedestrian"]
+        ["in", "class", "path", "pedestrian"],
+        ["!in", "subclass", "path", "footway"]
       ],
       "paint": {
         "line-color": "hsl(35, 6%, 80%)",
         "line-dasharray": [1, 0],
         "line-width": {"base": 1.2, "stops": [[14, 1.5], [20, 18]]}
+      }
+    },
+    {
+      "id": "bridge_path_pedestrian_trail_casing",
+      "type": "line",
+      "source": "openmaptiles",
+      "source-layer": "transportation",
+      "filter": [
+        "all",
+        ["==", "$type", "LineString"],
+        ["==", "brunnel", "bridge"],
+        ["in", "class", "path", "pedestrian"],
+        ["in", "subclass", "path", "footway"]
+      ],
+      "paint": {
+        "line-color": "rgb(206, 172, 52)",
+        "line-width": {"base": 1.2, "stops": [[14, 2], [20, 12]]}
       }
     },
     {
@@ -1141,12 +1159,31 @@
         "all",
         ["==", "$type", "LineString"],
         ["==", "brunnel", "bridge"],
-        ["in", "class", "path", "pedestrian"]
+        ["in", "class", "path", "pedestrian"],
+        ["!in", "subclass", "path", "footway"]
       ],
       "paint": {
         "line-color": "hsl(0, 0%, 100%)",
         "line-dasharray": [1, 0.3],
         "line-width": {"base": 1.2, "stops": [[14, 0.5], [20, 10]]}
+      }
+    },
+    {
+      "id": "bridge_path_pedestrian_trail",
+      "type": "line",
+      "source": "openmaptiles",
+      "source-layer": "transportation",
+      "filter": [
+        "all",
+        ["==", "$type", "LineString"],
+        ["==", "brunnel", "bridge"],
+        ["in", "class", "path", "pedestrian"],
+        ["in", "subclass", "path", "footway"]
+      ],
+      "paint": {
+        "line-color": "hsl(0, 0%, 100%)",
+        "line-dasharray": [0.8, 0.3],
+        "line-width": {"base": 1.2, "stops": [[14, 1], [20, 6]]}
       }
     },
     {
