@@ -1641,13 +1641,26 @@
       "id": "poi_saddle",
       "type": "symbol",
       "source": "openmaptiles",
-      "source-layer": "poi",
+      "source-layer": "mountain_peak",
       "minzoom": 13,
       "filter": ["all", ["==", "$type", "Point"], ["==", "class", "saddle"]],
       "layout": {
         "icon-image": "viewpoint_11",
         "text-anchor": "top",
-        "text-field": ["case", ["has", "name"], ["get", "name"], "Pass"],
+        "text-field": [
+          "case",
+          ["all", ["has", "name"], ["has", "ele"]],
+          [
+            "concat",
+            ["get", "name"],
+            "\n",
+            ["to-string", ["round", ["*", ["get", "ele"], 3.28084]]],
+            " ft"
+          ],
+          ["has", "name"],
+          ["get", "name"],
+          "Pass"
+        ],
         "text-font": ["Open Sans Regular"],
         "text-max-width": 9,
         "text-offset": [0, 0.6],
