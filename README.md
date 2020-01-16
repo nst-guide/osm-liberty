@@ -9,7 +9,9 @@ clear good looking design for the everyday user. It is based on the vector tile
 schema of [OpenMapTiles](https://github.com/openmaptiles/openmaptiles), with
 contours and terrain layers from non-OpenStreetMap sources.
 
-**[Preview OSM Liberty Topo with Maputnik](https://maputnik.github.io/editor/?style=https://raw.githubusercontent.com/nst-guide/osm-liberty-topo/gh-pages/style.json)**
+**[Preview OSM Liberty Topo](https://nst-guide.github.io/osm-liberty-topo)**
+
+**[Edit OSM Liberty Topo with Maputnik](https://maputnik.github.io/editor/?style=https://raw.githubusercontent.com/nst-guide/osm-liberty-topo/gh-pages/style.json)**
 
 ## Overview
 
