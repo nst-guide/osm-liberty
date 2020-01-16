@@ -2,12 +2,13 @@
 
 <img align="right" alt="OSM Liberty" src="logo.png" />
 
-A free Mapbox GL basemap style for everyone with complete liberty to use and
-self host. OSM Liberty Topo is a fork of OSM Liberty, which is itself a fork of
-OSM Bright. OSM Liberty Topo is based on free data sources with a mission for a
-clear good looking design for the everyday user. It is based on the vector tile
-schema of [OpenMapTiles](https://github.com/openmaptiles/openmaptiles), with
-contours and terrain layers from non-OpenStreetMap sources.
+A free topographic Mapbox GL basemap style for everyone with complete liberty to
+use and self host. OSM Liberty Topo is a fork of OSM Liberty, which is itself a
+fork of OSM Bright. OSM Liberty Topo is based on free data sources with a
+mission for a clear good looking design for the everyday user. It is based on
+the vector tile schema of
+[OpenMapTiles](https://github.com/openmaptiles/openmaptiles), with contours and
+terrain layers from non-OpenStreetMap sources.
 
 **[Preview OSM Liberty Topo](https://nst-guide.github.io/osm-liberty-topo)**
 
