@@ -25,9 +25,17 @@
       "maxzoom": 12,
       "encoding": "mapbox"
     },
-    "contours": {
+    "contour_10m": {
       "type": "vector",
-      "url": "https://tiles.nst.guide/contours/tile.json"
+      "tiles": ["https://tiles.nst.guide/contour_10m/{z}/{x}/{y}.pbf"],
+      "minzoom": 11,
+      "maxzoom": 11
+    },
+    "contour_40ft": {
+      "type": "vector",
+      "tiles": ["https://tiles.nst.guide/contour_40ft/{z}/{x}/{y}.pbf"],
+      "minzoom": 11,
+      "maxzoom": 11
     }
   },
   "sprite": "https://raw.githubusercontent.com/nst-guide/osm-liberty-topo/gh-pages/sprites/osm-liberty-topo",
@@ -134,13 +142,13 @@
       }
     },
     {
-      "id": "contour_index",
+      "id": "contour_index_ft",
       "type": "line",
-      "source": "contours",
-      "source-layer": "Elev_Contour",
+      "source": "contour_40ft",
+      "source-layer": "contour_ft",
       "minzoom": 0,
-      "filter": ["all", [">", "ContourElevation", 0], ["==", "FCode", 10102]],
-      "layout": {"visibility": "visible"},
+      "filter": ["==", ["%", ["get", "ele_ft"], 200], 0],
+      "layout": {"visibility": "none"},
       "paint": {
         "line-color": "rgb(166, 116, 66)",
         "line-opacity": {"stops": [[11, 0.2], [14, 0.4]]},
@@ -148,13 +156,39 @@
       }
     },
     {
-      "id": "contour",
+      "id": "contour_index_m",
       "type": "line",
-      "source": "contours",
-      "source-layer": "Elev_Contour",
-      "minzoom": 7,
-      "filter": ["all", ["==", "FCode", 10101], [">", "ContourElevation", 0]],
-      "layout": {"visibility": "visible"},
+      "source": "contour_10m",
+      "source-layer": "contour_m",
+      "minzoom": 0,
+      "filter": ["==", ["%", ["get", "ele_m"], 50], 0],
+      "paint": {
+        "line-color": "rgb(166, 116, 66)",
+        "line-opacity": {"stops": [[11, 0.2], [14, 0.4]]},
+        "line-width": 1.1
+      }
+    },
+    {
+      "id": "contour_ft",
+      "type": "line",
+      "source": "contour_40ft",
+      "source-layer": "contour_ft",
+      "minzoom": 11,
+      "filter": ["!=", ["%", ["get", "ele_ft"], 200], 0],
+      "layout": {"visibility": "none"},
+      "paint": {
+        "line-color": "rgb(179, 134, 89)",
+        "line-opacity": {"stops": [[11, 0.2], [14, 0.4]]},
+        "line-width": {"stops": [[11, 0.4], [14, 0.6]]}
+      }
+    },
+    {
+      "id": "contour_m",
+      "type": "line",
+      "source": "contour_10m",
+      "source-layer": "contour_m",
+      "minzoom": 11,
+      "filter": ["!=", ["%", ["get", "ele_m"], 50], 0],
       "paint": {
         "line-color": "rgb(179, 134, 89)",
         "line-opacity": {"stops": [[11, 0.2], [14, 0.4]]},
@@ -1414,17 +1448,12 @@
       }
     },
     {
-      "id": "contour_label",
+      "id": "contour_label_ft",
       "type": "symbol",
       "metadata": {},
-      "source": "contours",
-      "source-layer": "Elev_Contour",
-      "filter": [
-        "all",
-        ["==", "$type", "LineString"],
-        ["==", "FCode", 10102],
-        [">", "ContourElevation", 0]
-      ],
+      "source": "contour_40ft",
+      "source-layer": "contour_ft",
+      "filter": ["==", ["%", ["get", "ele_ft"], 200], 0],
       "layout": {
         "text-size": {"base": 1, "stops": [[15, 9.5], [20, 12]]},
         "text-allow-overlap": false,
@@ -1433,7 +1462,32 @@
         "symbol-placement": "line",
         "text-padding": 10,
         "text-rotation-alignment": "map",
-        "text-field": "{ContourElevation}",
+        "text-field": "{ele_ft}ft",
+        "text-font": ["Open Sans Regular"],
+        "visibility": "none"
+      },
+      "paint": {
+        "text-color": "rgb(131, 66, 37)",
+        "text-halo-color": "hsla(0, 0%, 100%, 0.5)",
+        "text-halo-width": 1.5
+      }
+    },
+    {
+      "id": "contour_label_m",
+      "type": "symbol",
+      "metadata": {},
+      "source": "contour_10m",
+      "source-layer": "contour_m",
+      "filter": ["==", ["%", ["get", "ele_m"], 50], 0],
+      "layout": {
+        "text-size": {"base": 1, "stops": [[15, 9.5], [20, 12]]},
+        "text-allow-overlap": false,
+        "symbol-avoid-edges": true,
+        "text-ignore-placement": false,
+        "symbol-placement": "line",
+        "text-padding": 10,
+        "text-rotation-alignment": "map",
+        "text-field": "{ele_m}m",
         "text-font": ["Open Sans Regular"],
         "visibility": "visible"
       },
