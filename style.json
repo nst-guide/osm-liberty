@@ -1762,7 +1762,7 @@
       }
     },
     {
-      "id": "poi_saddle",
+      "id": "poi_saddle_ft",
       "type": "symbol",
       "source": "openmaptiles",
       "source-layer": "mountain_peak",
@@ -1779,7 +1779,46 @@
             ["get", "name"],
             "\n",
             ["to-string", ["round", ["*", ["get", "ele"], 3.28084]]],
-            " ft"
+            "ft"
+          ],
+          ["has", "name"],
+          ["get", "name"],
+          "Pass"
+        ],
+        "text-font": ["Open Sans Regular"],
+        "text-max-width": 9,
+        "text-offset": [0, 0.6],
+        "text-size": 11,
+        "icon-allow-overlap": false,
+        "icon-size": {"stops": [[14, 0.65], [16, 1]]},
+        "visibility": "none"
+      },
+      "paint": {
+        "text-color": "rgba(30, 30, 30, 1)",
+        "text-halo-blur": 0.5,
+        "text-halo-color": "#ffffff",
+        "text-halo-width": 1.5
+      }
+    },
+    {
+      "id": "poi_saddle_m",
+      "type": "symbol",
+      "source": "openmaptiles",
+      "source-layer": "mountain_peak",
+      "minzoom": 13,
+      "filter": ["all", ["==", "$type", "Point"], ["==", "class", "saddle"]],
+      "layout": {
+        "icon-image": "viewpoint_11",
+        "text-anchor": "top",
+        "text-field": [
+          "case",
+          ["all", ["has", "name"], ["has", "ele"]],
+          [
+            "concat",
+            ["get", "name"],
+            "\n",
+            ["to-string", ["round", ["get", "ele"]]],
+            "m"
           ],
           ["has", "name"],
           ["get", "name"],
@@ -1800,7 +1839,7 @@
       }
     },
     {
-      "id": "poi_peak_rank1",
+      "id": "poi_peak_rank1_ft",
       "type": "symbol",
       "source": "openmaptiles",
       "source-layer": "mountain_peak",
@@ -1822,7 +1861,46 @@
           ["get", "name"],
           "\n",
           ["to-string", ["round", ["*", ["get", "ele"], 3.28084]]],
-          " ft"
+          "ft"
+        ],
+        "text-font": ["Open Sans Regular"],
+        "text-max-width": 9,
+        "text-offset": [0, 0.6],
+        "text-size": 11,
+        "icon-allow-overlap": false,
+        "visibility": "none"
+      },
+      "paint": {
+        "text-color": "rgba(30, 30, 30, 1)",
+        "text-halo-blur": 0.5,
+        "text-halo-color": "#ffffff",
+        "text-halo-width": 1.5
+      }
+    },
+    {
+      "id": "poi_peak_rank1_m",
+      "type": "symbol",
+      "source": "openmaptiles",
+      "source-layer": "mountain_peak",
+      "minzoom": 7,
+      "filter": [
+        "all",
+        ["==", "$type", "Point"],
+        ["<=", "rank", 1],
+        ["!in", "name", "peak", ""],
+        ["has", "ele"],
+        ["has", "name"],
+        ["==", "class", "peak"]
+      ],
+      "layout": {
+        "icon-image": "mountain_11",
+        "text-anchor": "top",
+        "text-field": [
+          "concat",
+          ["get", "name"],
+          "\n",
+          ["to-string", ["round", ["get", "ele"]]],
+          "m"
         ],
         "text-font": ["Open Sans Regular"],
         "text-max-width": 9,
@@ -1838,7 +1916,7 @@
       }
     },
     {
-      "id": "poi_volcano_rank1",
+      "id": "poi_volcano_rank1_ft",
       "type": "symbol",
       "source": "openmaptiles",
       "source-layer": "mountain_peak",
@@ -1860,7 +1938,46 @@
           ["get", "name"],
           "\n",
           ["to-string", ["round", ["*", ["get", "ele"], 3.28084]]],
-          " ft"
+          "ft"
+        ],
+        "text-font": ["Open Sans Regular"],
+        "text-max-width": 9,
+        "text-offset": [0, 0.6],
+        "text-size": 11,
+        "icon-allow-overlap": false,
+        "visibility": "none"
+      },
+      "paint": {
+        "text-color": "rgba(30, 30, 30, 1)",
+        "text-halo-blur": 0.5,
+        "text-halo-color": "#ffffff",
+        "text-halo-width": 1.5
+      }
+    },
+    {
+      "id": "poi_volcano_rank1_m",
+      "type": "symbol",
+      "source": "openmaptiles",
+      "source-layer": "mountain_peak",
+      "minzoom": 7,
+      "filter": [
+        "all",
+        ["==", "$type", "Point"],
+        ["<=", "rank", 1],
+        ["!in", "name", "peak", ""],
+        ["has", "ele"],
+        ["has", "name"],
+        ["==", "class", "volcano"]
+      ],
+      "layout": {
+        "icon-image": "volcano_11",
+        "text-anchor": "top",
+        "text-field": [
+          "concat",
+          ["get", "name"],
+          "\n",
+          ["to-string", ["round", ["get", "ele"]]],
+          "m"
         ],
         "text-font": ["Open Sans Regular"],
         "text-max-width": 9,
