@@ -29,13 +29,13 @@
       "type": "vector",
       "tiles": ["https://tiles.nst.guide/contour_10m/{z}/{x}/{y}.pbf"],
       "minzoom": 11,
-      "maxzoom": 11
+      "maxzoom": 13
     },
     "contour_40ft": {
       "type": "vector",
       "tiles": ["https://tiles.nst.guide/contour_40ft/{z}/{x}/{y}.pbf"],
       "minzoom": 11,
-      "maxzoom": 11
+      "maxzoom": 13
     }
   },
   "sprite": "https://raw.githubusercontent.com/nst-guide/osm-liberty-topo/gh-pages/sprites/osm-liberty-topo",
@@ -145,9 +145,14 @@
       "id": "contour_index_ft",
       "type": "line",
       "source": "contour_40ft",
-      "source-layer": "contour_ft",
+      "source-layer": "contour_40ft",
       "minzoom": 0,
-      "filter": ["==", ["%", ["get", "ele_ft"], 200], 0],
+      "filter": [
+        "any",
+        ["all", ["<=", ["zoom"], 11], ["==", ["%", ["get", "ele_ft"], 800], 0]],
+        ["all", ["==", ["zoom"], 12], ["==", ["%", ["get", "ele_ft"], 400], 0]],
+        ["all", [">=", ["zoom"], 13], ["==", ["%", ["get", "ele_ft"], 200], 0]]
+      ],
       "layout": {"visibility": "none"},
       "paint": {
         "line-color": "rgb(166, 116, 66)",
@@ -159,9 +164,14 @@
       "id": "contour_index_m",
       "type": "line",
       "source": "contour_10m",
-      "source-layer": "contour_m",
+      "source-layer": "contour_10m",
       "minzoom": 0,
-      "filter": ["==", ["%", ["get", "ele_m"], 50], 0],
+      "filter": [
+        "any",
+        ["all", ["<=", ["zoom"], 11], ["==", ["%", ["get", "ele_m"], 200], 0]],
+        ["all", ["==", ["zoom"], 12], ["==", ["%", ["get", "ele_m"], 100], 0]],
+        ["all", [">=", ["zoom"], 13], ["==", ["%", ["get", "ele_m"], 50], 0]]
+      ],
       "paint": {
         "line-color": "rgb(166, 116, 66)",
         "line-opacity": {"stops": [[11, 0.2], [14, 0.4]]},
@@ -172,9 +182,14 @@
       "id": "contour_ft",
       "type": "line",
       "source": "contour_40ft",
-      "source-layer": "contour_ft",
+      "source-layer": "contour_40ft",
       "minzoom": 11,
-      "filter": ["!=", ["%", ["get", "ele_ft"], 200], 0],
+      "filter": [
+        "any",
+        ["all", ["<=", ["zoom"], 11], ["!=", ["%", ["get", "ele_ft"], 800], 0]],
+        ["all", ["==", ["zoom"], 12], ["!=", ["%", ["get", "ele_ft"], 400], 0]],
+        ["all", [">=", ["zoom"], 13], ["!=", ["%", ["get", "ele_ft"], 200], 0]]
+      ],
       "layout": {"visibility": "none"},
       "paint": {
         "line-color": "rgb(179, 134, 89)",
@@ -186,9 +201,14 @@
       "id": "contour_m",
       "type": "line",
       "source": "contour_10m",
-      "source-layer": "contour_m",
+      "source-layer": "contour_10m",
       "minzoom": 11,
-      "filter": ["!=", ["%", ["get", "ele_m"], 50], 0],
+      "filter": [
+        "any",
+        ["all", ["<=", ["zoom"], 11], ["!=", ["%", ["get", "ele_m"], 200], 0]],
+        ["all", ["==", ["zoom"], 12], ["!=", ["%", ["get", "ele_m"], 100], 0]],
+        ["all", [">=", ["zoom"], 13], ["!=", ["%", ["get", "ele_m"], 50], 0]]
+      ],
       "paint": {
         "line-color": "rgb(179, 134, 89)",
         "line-opacity": {"stops": [[11, 0.2], [14, 0.4]]},
@@ -1452,8 +1472,13 @@
       "type": "symbol",
       "metadata": {},
       "source": "contour_40ft",
-      "source-layer": "contour_ft",
-      "filter": ["==", ["%", ["get", "ele_ft"], 200], 0],
+      "source-layer": "contour_40ft",
+      "filter": [
+        "any",
+        ["all", ["<=", ["zoom"], 11], ["==", ["%", ["get", "ele_ft"], 800], 0]],
+        ["all", ["==", ["zoom"], 12], ["==", ["%", ["get", "ele_ft"], 400], 0]],
+        ["all", [">=", ["zoom"], 13], ["==", ["%", ["get", "ele_ft"], 200], 0]]
+      ],
       "layout": {
         "text-size": {"base": 1, "stops": [[15, 9.5], [20, 12]]},
         "text-allow-overlap": false,
@@ -1477,8 +1502,13 @@
       "type": "symbol",
       "metadata": {},
       "source": "contour_10m",
-      "source-layer": "contour_m",
-      "filter": ["==", ["%", ["get", "ele_m"], 50], 0],
+      "source-layer": "contour_10m",
+      "filter": [
+        "any",
+        ["all", ["<=", ["zoom"], 11], ["==", ["%", ["get", "ele_m"], 200], 0]],
+        ["all", ["==", ["zoom"], 12], ["==", ["%", ["get", "ele_m"], 100], 0]],
+        ["all", [">=", ["zoom"], 13], ["==", ["%", ["get", "ele_m"], 50], 0]]
+      ],
       "layout": {
         "text-size": {"base": 1, "stops": [[15, 9.5], [20, 12]]},
         "text-allow-overlap": false,
