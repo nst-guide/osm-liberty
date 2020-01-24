@@ -241,7 +241,7 @@
         ["all", ["==", ["zoom"], 12], ["==", ["%", ["get", "ele_ft"], 400], 0]],
         ["all", [">=", ["zoom"], 13], ["==", ["%", ["get", "ele_ft"], 200], 0]]
       ],
-      "layout": {"visibility": "none"},
+      "layout": {"visibility": "visible"},
       "paint": {
         "line-color": "rgb(166, 116, 66)",
         "line-opacity": {"stops": [[11, 0.2], [14, 0.4]]},
@@ -260,6 +260,7 @@
         ["all", ["==", ["zoom"], 12], ["==", ["%", ["get", "ele_m"], 100], 0]],
         ["all", [">=", ["zoom"], 13], ["==", ["%", ["get", "ele_m"], 50], 0]]
       ],
+      "layout": {"visibility": "none"},
       "paint": {
         "line-color": "rgb(166, 116, 66)",
         "line-opacity": {"stops": [[11, 0.2], [14, 0.4]]},
@@ -278,7 +279,7 @@
         ["all", ["==", ["zoom"], 12], ["!=", ["%", ["get", "ele_ft"], 400], 0]],
         ["all", [">=", ["zoom"], 13], ["!=", ["%", ["get", "ele_ft"], 200], 0]]
       ],
-      "layout": {"visibility": "none"},
+      "layout": {"visibility": "visible"},
       "paint": {
         "line-color": "rgb(179, 134, 89)",
         "line-opacity": {"stops": [[11, 0.2], [14, 0.4]]},
@@ -297,6 +298,7 @@
         ["all", ["==", ["zoom"], 12], ["!=", ["%", ["get", "ele_m"], 100], 0]],
         ["all", [">=", ["zoom"], 13], ["!=", ["%", ["get", "ele_m"], 50], 0]]
       ],
+      "layout": {"visibility": "none"},
       "paint": {
         "line-color": "rgb(179, 134, 89)",
         "line-opacity": {"stops": [[11, 0.2], [14, 0.4]]},
@@ -1507,7 +1509,7 @@
         "text-rotation-alignment": "map",
         "text-field": "{ele_ft}ft",
         "text-font": ["Open Sans Regular"],
-        "visibility": "none"
+        "visibility": "visible"
       },
       "paint": {
         "text-color": "rgb(131, 66, 37)",
@@ -1537,7 +1539,7 @@
         "text-rotation-alignment": "map",
         "text-field": "{ele_m}m",
         "text-font": ["Open Sans Regular"],
-        "visibility": "visible"
+        "visibility": "none"
       },
       "paint": {
         "text-color": "rgb(131, 66, 37)",
@@ -1809,7 +1811,7 @@
         "text-size": 11,
         "icon-allow-overlap": false,
         "icon-size": {"stops": [[14, 0.65], [16, 1]]},
-        "visibility": "none"
+        "visibility": "visible"
       },
       "paint": {
         "text-color": "rgba(30, 30, 30, 1)",
@@ -1847,7 +1849,8 @@
         "text-offset": [0, 0.6],
         "text-size": 11,
         "icon-allow-overlap": false,
-        "icon-size": {"stops": [[14, 0.65], [16, 1]]}
+        "icon-size": {"stops": [[14, 0.65], [16, 1]]},
+        "visibility": "none"
       },
       "paint": {
         "text-color": "rgba(30, 30, 30, 1)",
@@ -1886,7 +1889,7 @@
         "text-offset": [0, 0.6],
         "text-size": 11,
         "icon-allow-overlap": false,
-        "visibility": "none"
+        "visibility": "visible"
       },
       "paint": {
         "text-color": "rgba(30, 30, 30, 1)",
@@ -1924,7 +1927,8 @@
         "text-max-width": 9,
         "text-offset": [0, 0.6],
         "text-size": 11,
-        "icon-allow-overlap": false
+        "icon-allow-overlap": false,
+        "visibility": "none"
       },
       "paint": {
         "text-color": "rgba(30, 30, 30, 1)",
@@ -1963,7 +1967,7 @@
         "text-offset": [0, 0.6],
         "text-size": 11,
         "icon-allow-overlap": false,
-        "visibility": "none"
+        "visibility": "visible"
       },
       "paint": {
         "text-color": "rgba(30, 30, 30, 1)",
@@ -2001,7 +2005,8 @@
         "text-max-width": 9,
         "text-offset": [0, 0.6],
         "text-size": 11,
-        "icon-allow-overlap": false
+        "icon-allow-overlap": false,
+        "visibility": "none"
       },
       "paint": {
         "text-color": "rgba(30, 30, 30, 1)",
