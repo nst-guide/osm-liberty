@@ -20,7 +20,7 @@
     },
     "fstopo": {
       "minzoom": 4,
-      "maxzoom": 16,
+      "maxzoom": 15,
       "tileSize": 512,
       "tiles": ["https://tiles.nst.guide/fstopo-png/{z}/{x}/{y}.png"],
       "type": "raster",
