@@ -20,7 +20,7 @@
     },
     "fstopo": {
       "minzoom": 4,
-      "maxzoom": 16,
+      "maxzoom": 15,
       "tileSize": 512,
       "tiles": ["https://tiles.nst.guide/fstopo-png/{z}/{x}/{y}.png"],
       "type": "raster",
@@ -33,9 +33,17 @@
       "maxzoom": 12,
       "encoding": "mapbox"
     },
-    "contours": {
+    "contour_10m": {
       "type": "vector",
-      "url": "https://tiles.nst.guide/contours/tile.json"
+      "tiles": ["https://tiles.nst.guide/contour_10m/{z}/{x}/{y}.pbf"],
+      "minzoom": 11,
+      "maxzoom": 13
+    },
+    "contour_40ft": {
+      "type": "vector",
+      "tiles": ["https://tiles.nst.guide/contour_40ft/{z}/{x}/{y}.pbf"],
+      "minzoom": 11,
+      "maxzoom": 13
     }
   },
   "sprite": "https://raw.githubusercontent.com/nst-guide/osm-liberty-topo/gh-pages/sprites/osm-liberty-topo",
@@ -202,31 +210,79 @@
       }
     },
     {
-      "id": "contour",
+      "id": "contour_index_ft",
       "type": "line",
-      "source": "contours",
-      "source-layer": "Elev_Contour",
-      "minzoom": 7,
-      "filter": ["all", ["==", "FCode", 10101], [">", "ContourElevation", 0]],
-      "layout": {"visibility": "visible"},
-      "paint": {
-        "line-color": "rgb(179, 134, 89)",
-        "line-opacity": {"stops": [[11, 0.2], [15, 0.5]]},
-        "line-width": {"stops": [[11, 0.4], [14, 0.7]]}
-      }
-    },
-    {
-      "id": "contour_index",
-      "type": "line",
-      "source": "contours",
-      "source-layer": "Elev_Contour",
+      "source": "contour_40ft",
+      "source-layer": "contour_40ft",
       "minzoom": 0,
-      "filter": ["all", [">", "ContourElevation", 0], ["==", "FCode", 10102]],
+      "filter": [
+        "any",
+        ["all", ["<=", ["zoom"], 11], ["==", ["%", ["get", "ele_ft"], 800], 0]],
+        ["all", ["==", ["zoom"], 12], ["==", ["%", ["get", "ele_ft"], 400], 0]],
+        ["all", [">=", ["zoom"], 13], ["==", ["%", ["get", "ele_ft"], 200], 0]]
+      ],
       "layout": {"visibility": "visible"},
       "paint": {
         "line-color": "rgb(166, 116, 66)",
-        "line-opacity": {"stops": [[11, 0.2], [15, 0.6]]},
+        "line-opacity": {"stops": [[11, 0.2], [14, 0.4]]},
         "line-width": 1.1
+      }
+    },
+    {
+      "id": "contour_index_m",
+      "type": "line",
+      "source": "contour_10m",
+      "source-layer": "contour_10m",
+      "minzoom": 0,
+      "filter": [
+        "any",
+        ["all", ["<=", ["zoom"], 11], ["==", ["%", ["get", "ele_m"], 200], 0]],
+        ["all", ["==", ["zoom"], 12], ["==", ["%", ["get", "ele_m"], 100], 0]],
+        ["all", [">=", ["zoom"], 13], ["==", ["%", ["get", "ele_m"], 50], 0]]
+      ],
+      "layout": {"visibility": "none"},
+      "paint": {
+        "line-color": "rgb(166, 116, 66)",
+        "line-opacity": {"stops": [[11, 0.2], [14, 0.4]]},
+        "line-width": 1.1
+      }
+    },
+    {
+      "id": "contour_ft",
+      "type": "line",
+      "source": "contour_40ft",
+      "source-layer": "contour_40ft",
+      "minzoom": 11,
+      "filter": [
+        "any",
+        ["all", ["<=", ["zoom"], 11], ["!=", ["%", ["get", "ele_ft"], 800], 0]],
+        ["all", ["==", ["zoom"], 12], ["!=", ["%", ["get", "ele_ft"], 400], 0]],
+        ["all", [">=", ["zoom"], 13], ["!=", ["%", ["get", "ele_ft"], 200], 0]]
+      ],
+      "layout": {"visibility": "visible"},
+      "paint": {
+        "line-color": "rgb(179, 134, 89)",
+        "line-opacity": {"stops": [[11, 0.2], [14, 0.4]]},
+        "line-width": {"stops": [[11, 0.4], [14, 0.6]]}
+      }
+    },
+    {
+      "id": "contour_m",
+      "type": "line",
+      "source": "contour_10m",
+      "source-layer": "contour_10m",
+      "minzoom": 11,
+      "filter": [
+        "any",
+        ["all", ["<=", ["zoom"], 11], ["!=", ["%", ["get", "ele_m"], 200], 0]],
+        ["all", ["==", ["zoom"], 12], ["!=", ["%", ["get", "ele_m"], 100], 0]],
+        ["all", [">=", ["zoom"], 13], ["!=", ["%", ["get", "ele_m"], 50], 0]]
+      ],
+      "layout": {"visibility": "none"},
+      "paint": {
+        "line-color": "rgb(179, 134, 89)",
+        "line-opacity": {"stops": [[11, 0.2], [14, 0.4]]},
+        "line-width": {"stops": [[11, 0.4], [14, 0.6]]}
       }
     },
     {
@@ -1411,28 +1467,58 @@
       }
     },
     {
-      "id": "contour_label",
+      "id": "contour_label_ft",
       "type": "symbol",
       "metadata": {},
-      "source": "contours",
-      "source-layer": "Elev_Contour",
+      "source": "contour_40ft",
+      "source-layer": "contour_40ft",
       "filter": [
-        "all",
-        ["==", "$type", "LineString"],
-        ["==", "FCode", 10102],
-        [">", "ContourElevation", 0]
+        "any",
+        ["all", ["<=", ["zoom"], 11], ["==", ["%", ["get", "ele_ft"], 800], 0]],
+        ["all", ["==", ["zoom"], 12], ["==", ["%", ["get", "ele_ft"], 400], 0]],
+        ["all", [">=", ["zoom"], 13], ["==", ["%", ["get", "ele_ft"], 200], 0]]
       ],
       "layout": {
-        "text-size": {"base": 1, "stops": [[15, 10], [20, 12]]},
+        "text-size": {"base": 1, "stops": [[15, 9.5], [20, 12]]},
         "text-allow-overlap": false,
         "symbol-avoid-edges": true,
         "text-ignore-placement": false,
         "symbol-placement": "line",
         "text-padding": 10,
         "text-rotation-alignment": "map",
-        "text-field": "{ContourElevation}",
+        "text-field": "{ele_ft}ft",
         "text-font": ["Open Sans Regular"],
         "visibility": "visible"
+      },
+      "paint": {
+        "text-color": "rgb(131, 66, 37)",
+        "text-halo-color": "hsla(0, 0%, 100%, 0.5)",
+        "text-halo-width": 1.5
+      }
+    },
+    {
+      "id": "contour_label_m",
+      "type": "symbol",
+      "metadata": {},
+      "source": "contour_10m",
+      "source-layer": "contour_10m",
+      "filter": [
+        "any",
+        ["all", ["<=", ["zoom"], 11], ["==", ["%", ["get", "ele_m"], 200], 0]],
+        ["all", ["==", ["zoom"], 12], ["==", ["%", ["get", "ele_m"], 100], 0]],
+        ["all", [">=", ["zoom"], 13], ["==", ["%", ["get", "ele_m"], 50], 0]]
+      ],
+      "layout": {
+        "text-size": {"base": 1, "stops": [[15, 9.5], [20, 12]]},
+        "text-allow-overlap": false,
+        "symbol-avoid-edges": true,
+        "text-ignore-placement": false,
+        "symbol-placement": "line",
+        "text-padding": 10,
+        "text-rotation-alignment": "map",
+        "text-field": "{ele_m}m",
+        "text-font": ["Open Sans Regular"],
+        "visibility": "none"
       },
       "paint": {
         "text-color": "rgb(131, 66, 37)",
@@ -1675,7 +1761,7 @@
       }
     },
     {
-      "id": "poi_saddle",
+      "id": "poi_saddle_ft",
       "type": "symbol",
       "source": "openmaptiles",
       "source-layer": "mountain_peak",
@@ -1692,7 +1778,7 @@
             ["get", "name"],
             "\n",
             ["to-string", ["round", ["*", ["get", "ele"], 3.28084]]],
-            " ft"
+            "ft"
           ],
           ["has", "name"],
           ["get", "name"],
@@ -1703,7 +1789,8 @@
         "text-offset": [0, 0.6],
         "text-size": 11,
         "icon-allow-overlap": false,
-        "icon-size": {"stops": [[14, 0.65], [16, 1]]}
+        "icon-size": {"stops": [[14, 0.65], [16, 1]]},
+        "visibility": "visible"
       },
       "paint": {
         "text-color": "rgba(30, 30, 30, 1)",
@@ -1713,7 +1800,46 @@
       }
     },
     {
-      "id": "poi_peak_rank1",
+      "id": "poi_saddle_m",
+      "type": "symbol",
+      "source": "openmaptiles",
+      "source-layer": "mountain_peak",
+      "minzoom": 13,
+      "filter": ["all", ["==", "$type", "Point"], ["==", "class", "saddle"]],
+      "layout": {
+        "icon-image": "viewpoint_11",
+        "text-anchor": "top",
+        "text-field": [
+          "case",
+          ["all", ["has", "name"], ["has", "ele"]],
+          [
+            "concat",
+            ["get", "name"],
+            "\n",
+            ["to-string", ["round", ["get", "ele"]]],
+            "m"
+          ],
+          ["has", "name"],
+          ["get", "name"],
+          "Pass"
+        ],
+        "text-font": ["Open Sans Regular"],
+        "text-max-width": 9,
+        "text-offset": [0, 0.6],
+        "text-size": 11,
+        "icon-allow-overlap": false,
+        "icon-size": {"stops": [[14, 0.65], [16, 1]]},
+        "visibility": "none"
+      },
+      "paint": {
+        "text-color": "rgba(30, 30, 30, 1)",
+        "text-halo-blur": 0.5,
+        "text-halo-color": "#ffffff",
+        "text-halo-width": 1.5
+      }
+    },
+    {
+      "id": "poi_peak_rank1_ft",
       "type": "symbol",
       "source": "openmaptiles",
       "source-layer": "mountain_peak",
@@ -1735,13 +1861,14 @@
           ["get", "name"],
           "\n",
           ["to-string", ["round", ["*", ["get", "ele"], 3.28084]]],
-          " ft"
+          "ft"
         ],
         "text-font": ["Open Sans Regular"],
         "text-max-width": 9,
         "text-offset": [0, 0.6],
         "text-size": 11,
-        "icon-allow-overlap": false
+        "icon-allow-overlap": false,
+        "visibility": "visible"
       },
       "paint": {
         "text-color": "rgba(30, 30, 30, 1)",
@@ -1751,7 +1878,46 @@
       }
     },
     {
-      "id": "poi_volcano_rank1",
+      "id": "poi_peak_rank1_m",
+      "type": "symbol",
+      "source": "openmaptiles",
+      "source-layer": "mountain_peak",
+      "minzoom": 7,
+      "filter": [
+        "all",
+        ["==", "$type", "Point"],
+        ["<=", "rank", 1],
+        ["!in", "name", "peak", ""],
+        ["has", "ele"],
+        ["has", "name"],
+        ["==", "class", "peak"]
+      ],
+      "layout": {
+        "icon-image": "mountain_11",
+        "text-anchor": "top",
+        "text-field": [
+          "concat",
+          ["get", "name"],
+          "\n",
+          ["to-string", ["round", ["get", "ele"]]],
+          "m"
+        ],
+        "text-font": ["Open Sans Regular"],
+        "text-max-width": 9,
+        "text-offset": [0, 0.6],
+        "text-size": 11,
+        "icon-allow-overlap": false,
+        "visibility": "none"
+      },
+      "paint": {
+        "text-color": "rgba(30, 30, 30, 1)",
+        "text-halo-blur": 0.5,
+        "text-halo-color": "#ffffff",
+        "text-halo-width": 1.5
+      }
+    },
+    {
+      "id": "poi_volcano_rank1_ft",
       "type": "symbol",
       "source": "openmaptiles",
       "source-layer": "mountain_peak",
@@ -1773,13 +1939,53 @@
           ["get", "name"],
           "\n",
           ["to-string", ["round", ["*", ["get", "ele"], 3.28084]]],
-          " ft"
+          "ft"
         ],
         "text-font": ["Open Sans Regular"],
         "text-max-width": 9,
         "text-offset": [0, 0.6],
         "text-size": 11,
-        "icon-allow-overlap": false
+        "icon-allow-overlap": false,
+        "visibility": "visible"
+      },
+      "paint": {
+        "text-color": "rgba(30, 30, 30, 1)",
+        "text-halo-blur": 0.5,
+        "text-halo-color": "#ffffff",
+        "text-halo-width": 1.5
+      }
+    },
+    {
+      "id": "poi_volcano_rank1_m",
+      "type": "symbol",
+      "source": "openmaptiles",
+      "source-layer": "mountain_peak",
+      "minzoom": 7,
+      "filter": [
+        "all",
+        ["==", "$type", "Point"],
+        ["<=", "rank", 1],
+        ["!in", "name", "peak", ""],
+        ["has", "ele"],
+        ["has", "name"],
+        ["==", "class", "volcano"]
+      ],
+      "layout": {
+        "icon-image": "volcano_11",
+        "text-anchor": "top",
+        "text-field": [
+          "concat",
+          ["get", "name"],
+          "\n",
+          ["to-string", ["round", ["get", "ele"]]],
+          "m"
+        ],
+        "text-font": ["Open Sans Regular"],
+        "text-max-width": 9,
+        "text-offset": [0, 0.6],
+        "text-size": 11,
+        "icon-allow-overlap": false,
+        "visibility": "none"
       },
       "paint": {
         "text-color": "rgba(30, 30, 30, 1)",
