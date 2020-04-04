@@ -26,12 +26,15 @@
       "type": "raster",
       "scheme": "tms"
     },
-    "terrain-rgb": {
+    "terrarium": {
       "type": "raster-dem",
-      "tiles": ["https://tiles.nst.guide/terrain-rgb-webp/{z}/{x}/{y}.png"],
+      "tiles": [
+        "https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png"
+      ],
       "minzoom": 0,
-      "maxzoom": 12,
-      "encoding": "mapbox"
+      "maxzoom": 15,
+      "tileSize": 256,
+      "encoding": "terrarium"
     },
     "contour_10m": {
       "type": "vector",
@@ -178,15 +181,14 @@
       "paint": {"raster-opacity": 1}
     },
     {
-      "id": "terrain-rgb",
+      "id": "terrain-rgb-terrarium",
       "type": "hillshade",
-      "source": "terrain-rgb",
+      "source": "terrarium",
       "minzoom": 0,
-      "layout": {"visibility": "visible"},
       "paint": {
         "hillshade-shadow-color": "hsl(39, 21%, 33%)",
         "hillshade-illumination-direction": 315,
-        "hillshade-exaggeration": {"stops": [[6, 0.8], [13, 0.1]]}
+        "hillshade-exaggeration": 0.3
       }
     },
     {
