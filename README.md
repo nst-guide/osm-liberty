@@ -19,7 +19,7 @@ terrain layers from non-OpenStreetMap sources.
 The main changes of this fork compared to the original:
 
 - Contours layer, using 40' contours data from USGS, created from [this repository](https://github.com/nst-guide/contours).
-- Hillshade layer, using generated tiles conforming to the Mapbox Terrain RGB standard, created from [this repository](https://github.com/nst-guide/terrain)
+- Hillshade layer, using public [AWS Terrain Tiles](https://registry.opendata.aws/terrain-tiles/)
 - Uses Open Sans fonts instead of Roboto.
 - Puts more focus on trails
 - Includes POIs for mountain peaks, mountain passes, campsites, toilets, springs
@@ -34,8 +34,7 @@ The main changes of this fork compared to the original:
 There are currently _8_ `style*.json` files in this repository. This is because
 there are 4 different styles, and each style can use either WebP or PNG raster
 tiles. While the OSM data from OpenMapTiles is in vector format, the
-[terrain-rgb hillshade](https://github.com/nst-guide/terrain), [NAIP
-imagery](https://github.com/nst-guide/naip), and [USFS topo
+hillshade, [NAIP imagery](https://github.com/nst-guide/naip), and [USFS topo
 maps](https://github.com/nst-guide/fstopo) are in raster format.
 
 WebP is a newer image compression format, that is [not yet supported on all
@@ -86,9 +85,9 @@ Currently, the only fonts used are:
 - Open Sans Semibold Italic
 - Open Sans Italic
 
-The full ranges for each of these three font stacks are in the `fonts/`
-directory. Alternatively, pregenerated Open Sans and Roboto font stacks can be
-downloaded from
+The full ranges for each of these three font stacks are hosted from the
+[`openmaptiles-fonts`](https://github.com/kylebarron/openmaptiles-fonts)
+repository. These are downloaded from
 [openmaptiles/fonts](https://github.com/openmaptiles/fonts/releases).
 
 ## Usage
@@ -101,14 +100,12 @@ other sources. For the OSM vector tiles, you can either subscribe to [Maptiler
 Cloud](https://www.maptiler.com/cloud/) or generate them yourself with the
 [OpenMapTiles](https://github.com/openmaptiles/openmaptiles) project.
 
-For the hillshading and contours layers, you'll need to generate them yourself.
-Instructions for generating the hillshade are
-[here](https://github.com/nst-guide/terrain), and instructions for the
-contours are [here](https://github.com/nst-guide/contours). Currently, these
-repositories use data from the US Geological Survey, and thus work only for the
-United States. Note, however, that this style can work with data created from
-any elevation data source as long as the layer name in the vector tiles matches
-the name referenced in this style.
+You'll need to generate the contours yourself. You can find instructions
+[here](https://github.com/nst-guide/contours). Currently, these repositories use
+data from the US Geological Survey, and thus work only for the United States.
+Note, however, that this style can work with data created from any elevation
+data source as long as the layer name in the vector tiles matches the name
+referenced in this style.
 
 By default, the fonts and sprites are served from this Github repository.
 
@@ -150,10 +147,7 @@ By default, the fonts and sprites are served from this Github repository.
 - [Maki](https://www.mapbox.com/maki-icons/) as icon set
 - [Contours](https://github.com/nst-guide/contours) come from USGS 40' contour
   data, but could be modified to work with another international data source.
-- [Terrain hillshading](https://github.com/nst-guide/hillshade) comes from USGS
-  1/3rd arc-second DEM files, processed to into a [Mapbox Terrain
-  RGB](https://docs.mapbox.com/help/troubleshooting/access-elevation-data/#mapbox-terrain-rgb)
-  compliant format.
+- Terrain hillshading uses public [AWS Terrain Tiles](https://registry.opendata.aws/terrain-tiles/). No extra work is necessary.
 - [Aerial imagery](https://github.com/nst-guide/naip) comes from the US
   Department of Agriculture's National Agriculture Imagery Program's
   openly-licensed imagery.
