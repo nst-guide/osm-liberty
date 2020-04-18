@@ -41,7 +41,7 @@
       "maxzoom": 13
     }
   },
-  "sprite": "https://cdn.jsdelivr.net/gh/nst-guide/osm-liberty-topo@gh-pages/sprites/osm-liberty-topo",
+  "sprite": "https://nst-guide.github.io/osm-liberty-topo/sprites/osm-liberty-topo",
   "glyphs": "https://cdn.jsdelivr.net/gh/kylebarron/openmaptiles-fonts/fonts/{fontstack}/{range}.pbf",
   "layers": [
     {
